@@ -1,0 +1,173 @@
+
+:root {
+  --palette-bg-default: #303030;
+  --palette-bg-paper: #424242;
+  --palette-common-black: #000;
+  --palette-common-white: #fff;
+  --palette-text-primary: #fff;
+  --palette-text-secondary: rgba(255, 255, 255, 0.7);
+  --palette-grey-500: #212121;
+  --palette-grey-300: ##e0e0e0;
+  --palette-grey-500-dark: #171717;
+  --shadows-4: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  --typography-font-family: 'Roboto', 'Helvetica','Arial', sans-serif;
+  --typography-body1-font-size: 16px;
+  --typography-body1-line-height: 1.5;
+  --typography-body1-letter-spacing: 0.00938em;
+  --typography-body2-font-size: 14px;
+  --typography-body2-line-height: 1.43;
+  --typography-body2-letter-spacing: 0.01071em;
+  --typography-button-font-size: 14px;
+  --typography-button-line-height: 1.75;
+  --typography-button-letter-spacing: 0.02857em;
+  --typography-font-weight-light: 300;
+  --typography-font-weight-regular: 400;
+  --typography-font-weight-medium: 500;
+  --typography-font-weight-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select[multiple],
+select[size],
+textarea {
+  border: 1px solid var(--palette-grey-300);
+  border-radius: 2px;
+  color: var(--palette-common-black);
+  font-size: var(--typography-body1-font-size);
+  line-height: var(--typography-body1-line-height);
+  letter-spacing: var(--typography-body1-letter-spacing);
+  font-weight: var(--typography-font-weight-regular);
+  margin: 0;
+  max-width: 100%;
+  outline: 0;
+  padding: 8px;
+  transition: border-color .2s;
+  vertical-align: middle;
+}
+
+img, video {
+  border: 0;
+  max-width: 100%;
+}
+
+body,
+div,
+dl,
+dd,
+form,
+img,
+input,
+figure,
+menu {
+  margin: 0;
+  padding: 0;
+}
+
+li, li p {
+  margin: 8px 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--palette-text-primary);
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-body1-font-size);
+  line-height: var(--typography-body1-line-height);
+  letter-spacing: var(--typography-body1-letter-spacing);
+  margin: 0;
+  max-width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  background-color: var(--palette-bg-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: var(--typography-font-weight-regular);
+  color: var(--palette-text-secondary);
+  text-decoration: none;
+}
+
+p {
+  margin: 0 auto 1em auto;
+  text-align: justify;
+}
+
+button {
+  color: var(--palette-text-primary);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  height: 36px;
+  user-select: none;
+  transition: background-color .2s, box-shadow .2s;
+  
+  /* truncate string with ellipsis */
+  min-width: 64px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: var(--typography-button-font-size);
+  letter-spacing: var(--typography-button-letter-spacing);
+  font-weight: var(--typography-font-weight-bold);
+  text-transform: uppercase;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 48px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+main {
+  width: 100%;
+  padding-bottom: 50px;
+  margin-top: 48px;
+}
+

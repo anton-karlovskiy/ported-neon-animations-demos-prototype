@@ -24,6 +24,15 @@
   --typography-font-weight-regular: 400;
   --typography-font-weight-medium: 500;
   --typography-font-weight-bold: 700;
+
+  --google-red-100: #f4c7c3;
+  --google-red-300: #e67c73;
+  --google-yellow-100: #fce8b2;
+  --google-yellow-300: #f7cb4d;
+  --google-blue-100: #c6dafc;
+  --google-blue-300: #7baaf7;
+  --google-green-100: #b7e1cd;
+  --google-green-300: #57bb8a;
 }
 
 * {

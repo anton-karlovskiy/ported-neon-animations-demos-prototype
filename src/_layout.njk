@@ -5,7 +5,10 @@
   <title>Ported Neon Animations Demos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <!-- TODO: critical and non-critical css for render blocking resources -->
-  <link rel="stylesheet" href="/style/main.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  {% for pageStylesheet in pageStylesheets %}
+    <link rel="stylesheet" href="{{pageStylesheet}}">
+  {% endfor %}
 </head>
 <body>
   {% include "./template-parts/_header.njk" %}

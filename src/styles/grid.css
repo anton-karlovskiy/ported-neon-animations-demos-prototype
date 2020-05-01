@@ -1,0 +1,9 @@
+
+body {
+  overflow: hidden;
+  @apply --layout-fullbleed;
+}
+
+.neon-animated-pages {
+  height: 100%;
+}

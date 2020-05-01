@@ -1,7 +1,7 @@
 {
-  "name": "metrics-visualizer",
+  "name": "ported-neon-animations-demos",
   "version": "1.0.0",
-  "description": "Metrics Visulaizer",
+  "description": "Ported Neon Animations Demos",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

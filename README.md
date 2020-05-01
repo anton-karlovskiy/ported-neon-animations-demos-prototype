@@ -1,5 +1,5 @@
 
-# Metrics Visualizer
+# Ported Neon Animations Demos
 
 ## Glitch Source
 
@@ -9,7 +9,7 @@
 ## Installation
 
 ```sh
-git clone git@github.com:anton-karlovskiy/metrics-visualizer.git
+git clone git@github.com:anton-karlovskiy/ported-neon-animations-demos.git
 npm install
 npm start
 npm run build

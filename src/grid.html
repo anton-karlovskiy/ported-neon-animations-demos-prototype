@@ -1,25 +1,33 @@
 
 {% set pageStylesheets = ["/styles/shared-styles.css", "/styles/grid.css"] %}
+{% set tiles = [
+  {value: 1, class: 'blue-300'},
+  {value: 2, class: 'red-300'},
+  {value: 3, class: 'blue-300'},
+  {value: 4, class: 'green-300'},
+  {value: 5, class: 'yellow-300'},
+  {value: 6, class: 'blue-300'},
+  {value: 7, class: 'red-300'},
+  {value: 8, class: 'green-300'},
+  {value: 9, class: 'yellow-300'},
+  {value: 10, class: 'red-300'}    
+] %}
+
 {% extends "_layout.njk" %}
 
 {% block content %}
-<main class="animated-grid">
-  {% set tiles = [
-    {value: 1, class: 'blue-300'},
-    {value: 2, class: 'red-300'},
-    {value: 3, class: 'blue-300'},
-    {value: 4, class: 'green-300'},
-    {value: 5, class: 'yellow-300'},
-    {value: 6, class: 'blue-300'},
-    {value: 7, class: 'red-300'},
-    {value: 8, class: 'green-300'},
-    {value: 9, class: 'yellow-300'},
-    {value: 10, class: 'red-300'}    
-  ] %}
-  {% for tile in tiles %}
-    <div class="{{"tile " + tile.class}}">
-      <span>{{tile.value}}</span>
-    </div>
-  {% endfor %}
+<main class="neon-animated-pages">
+  <div class="animated-grid">
+    {% for tile in tiles %}
+      <div class="{{"tile " + tile.class}}">
+        <span>{{tile.value}}</span>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="fullsize-page-with-card">
+    <!-- TODO: class should be dynamic -->
+    <div id="fixed" class="{{'fixed ' + 'green-100'}}"></div>
+    <div id="card" class="{{'card ' + 'green-300'}}"></div>
+  </div>
 </main>
 {% endblock %}

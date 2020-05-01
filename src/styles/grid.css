@@ -5,7 +5,8 @@ body {
 }
 
 .neon-animated-pages {
-  height: 100%;
+  height: 100vh;
+  position: relative;
 }
 
 .animated-grid {
@@ -14,6 +15,29 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.fullsize-page-with-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.fullsize-page-with-card .fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.fullsize-page-with-card .card {
+  position: relative;
+  margin: 15vh 15vw 0;
+  width: 70vw;
+  height: 70vh;
 }
 
 .tile {

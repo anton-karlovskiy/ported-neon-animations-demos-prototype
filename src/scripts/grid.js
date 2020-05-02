@@ -128,10 +128,8 @@ const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
 const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
   const fromRect = from.getBoundingClientRect();
-  // TODO: this might not be required once we resolve animation-fill-mode--not--working issue
-  // 1. we can try to resolve animation-fill-mode--not--working issue
-  // 2. we can try to use animation-fill-mode: backwards;
-  const toRect = getAdjustedBoundingClientReact(to);
+  
+  const toRect = to.getBoundingClientRect();
   if (gesture) {
     translateX = gesture.x - (toRect.left + (toRect.width / 2));
     translateY = gesture.y - (toRect.top + (toRect.height / 2));
@@ -158,7 +156,10 @@ const runRippleAnimation = ({ gesture, from, to }) => {
     ], {
       duration: 500,
       easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      fill: "both"
+      // TODO: the last keyframe's transform persisted probably due to display: none; of fullsizePageWithCard
+      // fill: "both"
+      // TODO: tweak
+      fill: "backwards"
     }
   );
 
@@ -176,7 +177,8 @@ const runRippleAnimation = ({ gesture, from, to }) => {
 
 const runHeroAnimation = ({ delay = 0, from, to }) => {
   const fromRect = from.getBoundingClientRect();
-  // TODO: the same
+  // TODO: this might not be required once we resolve animation-fill-mode--not--working issue
+  // 1. we can try to resolve animation-fill-mode--not--working issue by using z-index instead of display: none;
   const toRect = getAdjustedBoundingClientReact(to);
 
   const deltaLeft = fromRect.left - toRect.left;
@@ -218,7 +220,7 @@ const runFadeOutAnimation = ({ node }) => {
     ], {
       duration: 500,
       easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      // TODO: opacity: 0; persisted probably due to display: none; of fullsizePageWithCard
+      // TODO: the last keyframe's transform (opacity: 0;) persisted probably due to display: none; of fullsizePageWithCard
       // fill: "both"
       // TODO: tweak
       fill: "backwards"

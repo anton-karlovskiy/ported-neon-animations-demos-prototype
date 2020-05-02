@@ -11,13 +11,13 @@ const getAdjustedBoundingClientReact = el => {
 
   if (tx) {
     let sx, sy, dx, dy;
-    if (tx.startsWith('matrix3d(')) {
+    if (tx.startsWith("matrix3d(")) {
       const ta = tx.slice(9,-1).split(/, /);
       sx = +ta[0];
       sy = +ta[5];
       dx = +ta[12];
       dy = +ta[13];
-    } else if (tx.startsWith('matrix(')) {
+    } else if (tx.startsWith("matrix(")) {
       const ta = tx.slice(7,-1).split(/, /);
       sx = +ta[0];
       sy = +ta[3];
@@ -29,7 +29,7 @@ const getAdjustedBoundingClientReact = el => {
 
     const to = style.transformOrigin;
     const x = rect.x - dx - (1 - sx) * parseFloat(to);
-    const y = rect.y - dy - (1 - sy) * parseFloat(to.slice(to.indexOf(' ') + 1));
+    const y = rect.y - dy - (1 - sy) * parseFloat(to.slice(to.indexOf(" ") + 1));
     const w = sx ? rect.width / sx : el.offsetWidth;
     const h = sy ? rect.height / sy : el.offsetHeight;
     return {
@@ -52,6 +52,7 @@ const openFullSizePageWithCard = event => {
   fixedBackground.className = `fixed ${selectedColor}-100`;
   card.className = `card ${selectedColor}-300`;
 
+  // MEMO: this must be preceded before rippleAnimation();
   toggleFullSizePageWithCard();
 
   // MEMO: ripple animation
@@ -59,9 +60,8 @@ const openFullSizePageWithCard = event => {
     x: event.x || event.pageX,
     y: event.y || event.pageY
   };
-  const from = event.target;
-  const to = fixedBackground;
-  rippleAnimation({gesture, from, to});
+  runRippleAnimation({gesture, from: event.target, to: fixedBackground});
+  runHeroAnimation({delay: 150, from: event.target, to: card});
 };
 
 const closeFullSizePageWithCard = event => {
@@ -77,11 +77,10 @@ const toggleFullSizePageWithCard = () => {
   }
 };
 
-// ray test touch <
-const rippleAnimation = ({ gesture, from, to }) => {
+const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
-  const toRect = getAdjustedBoundingClientReact(to);
   const fromRect = from.getBoundingClientRect();
+  const toRect = getAdjustedBoundingClientReact(to);
   if (gesture) {
     translateX = gesture.x - (toRect.left + (toRect.width / 2));
     translateY = gesture.y - (toRect.top + (toRect.height / 2));
@@ -104,8 +103,8 @@ const rippleAnimation = ({ gesture, from, to }) => {
   const rippleAnimationKeyframes = new KeyframeEffect(
     to,
     [
-      {'transform': `${translate} scale(0)`},
-      {'transform': `${translate} ${scale}`}
+      {"transform": `${translate} scale(0)`},
+      {"transform": `${translate} ${scale}`}
     ],
     {
       duration: 500,
@@ -114,17 +113,54 @@ const rippleAnimation = ({ gesture, from, to }) => {
     }
   );
 
-  to.style.transformOrigin = '50% 50%';
-  to.style.borderRadius = '50%';
+  to.style.transformOrigin = "50% 50%";
+  to.style.borderRadius = "50%";
 
   const rippleAnimation = new Animation(rippleAnimationKeyframes, document.timeline);
   rippleAnimation.play();
+
+  rippleAnimation.onfinish = (() => {
+    to.style.transformOrigin = "";
+    to.style.borderRadius = "";
+  });
 };
 
-const heroAnimation = () => {
+const runHeroAnimation = ({ delay = 0, from, to }) => {
+  const fromRect = from.getBoundingClientRect();
+  const toRect = getAdjustedBoundingClientReact(to);
 
+  const deltaLeft = fromRect.left - toRect.left;
+  const deltaTop = fromRect.top - toRect.top;
+  const deltaWidth = fromRect.width / toRect.width;
+  const deltaHeight = fromRect.height / toRect.height;
+
+  const heroAnimationKeyframes = new KeyframeEffect(
+    to,
+    [
+      {"transform": `translate(${deltaLeft}px, ${deltaTop}px) scale(${deltaWidth}, ${deltaHeight})`},
+      {"transform": "none"}
+    ],
+    {
+      duration: 500,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      fill: "both",
+      delay
+    }
+  );
+
+  to.style.transformOrigin = "0 0";
+  to.style.zIndex = 10000;
+  // TODO: no need and bad effect of black background behind the tile
+  // from.style.visibility = 'hidden';
+
+  const heroAnimation = new Animation(heroAnimationKeyframes, document.timeline);
+  heroAnimation.play();
+
+  heroAnimation.onfinish = (() => {
+    to.style.zIndex = "";
+    from.style.visibility = "";
+  });
 };
-// ray test touch >
 
 for (const tile of tiles) {
   tile.addEventListener("mousedown", openFullSizePageWithCard, false);
@@ -133,8 +169,6 @@ for (const tile of tiles) {
 
 fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
 fixedBackground.addEventListener("touchstart", closeFullSizePageWithCard, false);
-card.addEventListener("mousedown", closeFullSizePageWithCard, false);
-card.addEventListener("touchstart", closeFullSizePageWithCard, false);
 
 // TODO: remove those event listeners
 // fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);

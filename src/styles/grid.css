@@ -34,6 +34,7 @@ body {
 }
 
 .fullsize-page-with-card .card {
+  pointer-events: none;
   position: relative;
   margin: 15vh 15vw 0;
   width: 70vw;

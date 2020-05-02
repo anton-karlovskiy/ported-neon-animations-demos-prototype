@@ -3,8 +3,8 @@
 
 ## Glitch Source
 
-* [Link to Glitch App]()
-* [Link to Project on Glitch]()
+* [Link to Glitch App](https://anton-karlovskiy-ported-neon-animations-demos.glitch.me)
+* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-ported-neon-animations-demos)
 
 ## Installation
 

@@ -233,7 +233,6 @@ const runFadeOutAnimation = ({ node }) => {
   fadeOutAnimation.onfinish = (() => {
     // TODO: could be simpler
     if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      console.log('[fadeOutAnimation.onfinish] transformAnimation is not running so do display: none; for full-size-page-with-card');
       toggleFullSizePageWithCard("none");
     }
   });
@@ -266,7 +265,6 @@ const runTransformAnimation = ({
   transformAnimation.onfinish = (() => {
     // TODO: the same
     if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      console.log('[transformAnimation.onfinish] fadeOutAnimation is not running so do display: none; for full-size-page-with-card');
       toggleFullSizePageWithCard("none");
     }
   });

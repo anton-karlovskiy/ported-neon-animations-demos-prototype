@@ -19,7 +19,7 @@
   {% include "./template-parts/_footer.njk" %}
 
   {# TODO: async or defer #}
-  <script async src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script> {# TODO: not working #}
   <script async src="./scripts/main.js"></script>
   {% for script in scripts %}
     <script async src="{{script}}"></script>

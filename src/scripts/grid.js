@@ -2,6 +2,34 @@
 const tiles = document.getElementsByClassName("tile");
 const fixedBackground = document.getElementById("fixed");
 const card = document.getElementById("card");
+let rippleAnimation;
+let heroAnimation;
+let fadeOutAnimation;
+let transformAnimation;
+
+const checkAnimationsRunning = () => {
+  const RUNNING_PLAY_STATE = "running";
+  if (rippleAnimation && rippleAnimation.playState === RUNNING_PLAY_STATE) return true;
+  if (heroAnimation && heroAnimation.playState === RUNNING_PLAY_STATE) return true;
+  if (fadeOutAnimation && fadeOutAnimation.playState === RUNNING_PLAY_STATE) return true;
+  if (transformAnimation && transformAnimation.playState === RUNNING_PLAY_STATE) return true;
+
+  return false;
+};
+
+// TODO: document.getAnimations(); not supported
+const checkAnimationsRunningWithUnsupportedMethod = () => {
+  let areAnimationsRunning = false;
+  const animations = document.getAnimations();
+  for (const animation of animations) {
+    if (animation.playState === 'running') {
+      areAnimationsRunning = true;
+      break;
+    }
+  }
+
+  return areAnimationsRunning;
+};
 
 // MEMO: inspired by https://stackoverflow.com/questions/27745438/how-to-compute-getboundingclientrect-without-considering-transforms
 const getAdjustedBoundingClientReact = el => {
@@ -48,6 +76,8 @@ const getAdjustedBoundingClientReact = el => {
 };
 
 const openFullSizePageWithCard = event => {
+  if (checkAnimationsRunning()) return;
+
   const selectedColor = event.srcElement.dataset.color;
   fixedBackground.className = `fixed ${selectedColor}-100`;
   card.className = `card ${selectedColor}-300`;
@@ -67,6 +97,7 @@ const openFullSizePageWithCard = event => {
 };
 
 const closeFullSizePageWithCard = event => {
+  if (checkAnimationsRunning()) return;
   runFadeOutAnimation({node: fixedBackground});
 
   runTransformAnimation({
@@ -88,6 +119,9 @@ const toggleFullSizePageWithCard = () => {
 const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
   const fromRect = from.getBoundingClientRect();
+  // TODO: this might not be required once we resolve animation-fill-mode--not--working issue
+  // 1. we can try to resolve animation-fill-mode--not--working issue
+  // 2. we can try to use animation-fill-mode: backwards;
   const toRect = getAdjustedBoundingClientReact(to);
   if (gesture) {
     translateX = gesture.x - (toRect.left + (toRect.width / 2));
@@ -122,7 +156,7 @@ const runRippleAnimation = ({ gesture, from, to }) => {
   to.style.transformOrigin = "50% 50%";
   to.style.borderRadius = "50%";
 
-  const rippleAnimation = new Animation(rippleAnimationKeyframes, document.timeline);
+  rippleAnimation = new Animation(rippleAnimationKeyframes, document.timeline);
   rippleAnimation.play();
 
   rippleAnimation.onfinish = (() => {
@@ -133,6 +167,7 @@ const runRippleAnimation = ({ gesture, from, to }) => {
 
 const runHeroAnimation = ({ delay = 0, from, to }) => {
   const fromRect = from.getBoundingClientRect();
+  // TODO: the same
   const toRect = getAdjustedBoundingClientReact(to);
 
   const deltaLeft = fromRect.left - toRect.left;
@@ -157,7 +192,7 @@ const runHeroAnimation = ({ delay = 0, from, to }) => {
   // TODO: no need and bad effect of black background behind the tile
   // from.style.visibility = "hidden";
 
-  const heroAnimation = new Animation(heroAnimationKeyframes, document.timeline);
+  heroAnimation = new Animation(heroAnimationKeyframes, document.timeline);
   heroAnimation.play();
 
   heroAnimation.onfinish = (() => {
@@ -183,7 +218,7 @@ const runFadeOutAnimation = ({ node }) => {
     }
   );
 
-  const fadeOutAnimation = new Animation(fadeOutAnimationKeyframes, document.timeline);
+  fadeOutAnimation = new Animation(fadeOutAnimationKeyframes, document.timeline);
   fadeOutAnimation.play();
 
   // ray test touch <<
@@ -215,7 +250,7 @@ const runTransformAnimation = ({
     node.style.transformOrigin = transformOrigin;
   }
 
-  const transformAnimation = new Animation(transformAnimationKeyframes, document.timeline);
+  transformAnimation = new Animation(transformAnimationKeyframes, document.timeline);
   transformAnimation.play();
 
   // ray test touch <<

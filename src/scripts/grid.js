@@ -1,4 +1,8 @@
 
+const ANIMATION_PLAY_STATE = {
+  RUNNING: "running"
+};
+
 const tiles = document.getElementsByClassName("tile");
 const fixedBackground = document.getElementById("fixed");
 const card = document.getElementById("card");
@@ -7,22 +11,23 @@ let heroAnimation;
 let fadeOutAnimation;
 let transformAnimation;
 
+// TODO: we could achieve this blocking with pointer-events: none;
 const checkAnimationsRunning = () => {
-  const RUNNING_PLAY_STATE = "running";
-  if (rippleAnimation && rippleAnimation.playState === RUNNING_PLAY_STATE) return true;
-  if (heroAnimation && heroAnimation.playState === RUNNING_PLAY_STATE) return true;
-  if (fadeOutAnimation && fadeOutAnimation.playState === RUNNING_PLAY_STATE) return true;
-  if (transformAnimation && transformAnimation.playState === RUNNING_PLAY_STATE) return true;
+  if (rippleAnimation && rippleAnimation.playState === ANIMATION_PLAY_STATE.RUNNING) return true;
+  if (heroAnimation && heroAnimation.playState === ANIMATION_PLAY_STATE.RUNNING) return true;
+  if (fadeOutAnimation && fadeOutAnimation.playState === ANIMATION_PLAY_STATE.RUNNING) return true;
+  if (transformAnimation && transformAnimation.playState === ANIMATION_PLAY_STATE.RUNNING) return true;
 
   return false;
 };
 
 // TODO: document.getAnimations(); not supported
+// MEMO: can be checked by https://css-tricks.com/css-animations-vs-web-animations-api/ and https://codepen.io/danwilson/pen/xGBKVq
 const checkAnimationsRunningWithUnsupportedMethod = () => {
   let areAnimationsRunning = false;
   const animations = document.getAnimations();
   for (const animation of animations) {
-    if (animation.playState === 'running') {
+    if (animation.playState === "running") {
       areAnimationsRunning = true;
       break;
     }
@@ -82,8 +87,8 @@ const openFullSizePageWithCard = event => {
   fixedBackground.className = `fixed ${selectedColor}-100`;
   card.className = `card ${selectedColor}-300`;
 
-  // MEMO: this must be preceded before rippleAnimation();
-  toggleFullSizePageWithCard();
+  // MEMO: this must be preceded before rippleAnimation(); & runHeroAnimation();
+  toggleFullSizePageWithCard("block");
 
   runRippleAnimation({
     gesture: {
@@ -107,14 +112,20 @@ const closeFullSizePageWithCard = event => {
   });
 };
 
-const toggleFullSizePageWithCard = () => {
+// ray test touch <
+const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
   const fullsizePageWithCard = document.querySelector(".fullsize-page-with-card");
-  if (fullsizePageWithCard.style.display === "none") {
-    fullsizePageWithCard.style.display = "block";
+  if (!displayPropertyValue) {
+    fullsizePageWithCard.style.display = fullsizePageWithCard.style.display === "none"
+      ? "block"
+      : "none";
   } else {
-    fullsizePageWithCard.style.display = "none";
+    if (fullsizePageWithCard.style.display !== displayPropertyValue) {
+      fullsizePageWithCard.style.display = displayPropertyValue;
+    }
   }
 };
+// ray test touch >
 
 const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
@@ -210,23 +221,25 @@ const runFadeOutAnimation = ({ node }) => {
     ], {
       duration: 500,
       easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      // ray test touch <<
       // TODO: tweak
       // fill: "both"
       fill: "backwards"
-      // ray test touch >>
     }
   );
 
   fadeOutAnimation = new Animation(fadeOutAnimationKeyframes, document.timeline);
   fadeOutAnimation.play();
 
-  // ray test touch <<
+  // ray test touch <
   fadeOutAnimation.onfinish = (() => {
-    console.log('ray : ***** [fadeOutAnimation.onfinish]');
-    toggleFullSizePageWithCard();
+    // TODO: could be simpler
+    if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
+      console.log('ray : ***** transformAnimation.playState => ', transformAnimation.playState);
+      console.log('[fadeOutAnimation.onfinish] transformAnimation is not running so do display: none; for full-size-page-with-card');
+      toggleFullSizePageWithCard("none");
+    }
   });
-  // ray test touch >>
+  // ray test touch >
 };
 
 const runTransformAnimation = ({
@@ -253,11 +266,16 @@ const runTransformAnimation = ({
   transformAnimation = new Animation(transformAnimationKeyframes, document.timeline);
   transformAnimation.play();
 
-  // ray test touch <<
+  // ray test touch <
   transformAnimation.onfinish = (() => {
-    console.log('ray : ***** [transformAnimation.onfinish]');
+    // TODO: the same
+    if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
+      console.log('ray : ***** fadeOutAnimation.playState => ', fadeOutAnimation.playState);
+      console.log('[transformAnimation.onfinish] fadeOutAnimation is not running so do display: none; for full-size-page-with-card');
+      toggleFullSizePageWithCard("none");
+    }
   });
-  // ray test touch >>
+  // ray test touch >
 };
 
 for (const tile of tiles) {

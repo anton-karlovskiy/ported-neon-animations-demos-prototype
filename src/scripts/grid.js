@@ -112,7 +112,6 @@ const closeFullSizePageWithCard = event => {
   });
 };
 
-// ray test touch <
 const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
   const fullsizePageWithCard = document.querySelector(".fullsize-page-with-card");
   if (!displayPropertyValue) {
@@ -125,7 +124,6 @@ const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
     }
   }
 };
-// ray test touch >
 
 const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
@@ -213,7 +211,6 @@ const runHeroAnimation = ({ delay = 0, from, to }) => {
 };
 
 const runFadeOutAnimation = ({ node }) => {
-  console.log('ray : ***** [runFadeOutAnimation]');
   const fadeOutAnimationKeyframes = new KeyframeEffect(
     node, [
       {"opacity": "1"},
@@ -221,8 +218,9 @@ const runFadeOutAnimation = ({ node }) => {
     ], {
       duration: 500,
       easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      // TODO: tweak
+      // TODO: opacity: 0; persisted probably due to display: none; of fullsizePageWithCard
       // fill: "both"
+      // TODO: tweak
       fill: "backwards"
     }
   );
@@ -230,16 +228,13 @@ const runFadeOutAnimation = ({ node }) => {
   fadeOutAnimation = new Animation(fadeOutAnimationKeyframes, document.timeline);
   fadeOutAnimation.play();
 
-  // ray test touch <
   fadeOutAnimation.onfinish = (() => {
     // TODO: could be simpler
     if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      console.log('ray : ***** transformAnimation.playState => ', transformAnimation.playState);
       console.log('[fadeOutAnimation.onfinish] transformAnimation is not running so do display: none; for full-size-page-with-card');
       toggleFullSizePageWithCard("none");
     }
   });
-  // ray test touch >
 };
 
 const runTransformAnimation = ({
@@ -266,16 +261,13 @@ const runTransformAnimation = ({
   transformAnimation = new Animation(transformAnimationKeyframes, document.timeline);
   transformAnimation.play();
 
-  // ray test touch <
   transformAnimation.onfinish = (() => {
     // TODO: the same
     if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      console.log('ray : ***** fadeOutAnimation.playState => ', fadeOutAnimation.playState);
       console.log('[transformAnimation.onfinish] fadeOutAnimation is not running so do display: none; for full-size-page-with-card');
       toggleFullSizePageWithCard("none");
     }
   });
-  // ray test touch >
 };
 
 for (const tile of tiles) {

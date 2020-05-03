@@ -128,8 +128,8 @@ const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
 const runRippleAnimation = ({ gesture, from, to }) => {
   let translateX, translateY;
   const fromRect = from.getBoundingClientRect();
-  
   const toRect = to.getBoundingClientRect();
+  
   if (gesture) {
     translateX = gesture.x - (toRect.left + (toRect.width / 2));
     translateY = gesture.y - (toRect.top + (toRect.height / 2));
@@ -272,14 +272,10 @@ const runTransformAnimation = ({
 
 for (const tile of tiles) {
   tile.addEventListener("mousedown", openFullSizePageWithCard, false);
-  tile.addEventListener("touchstart", openFullSizePageWithCard, false);
 }
 
 fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
-fixedBackground.addEventListener("touchstart", closeFullSizePageWithCard, false);
 
 // TODO: remove those event listeners
 // fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
-// fixedBackground.removeEventListener("touchstart", closeFullSizePageWithCard, false);
 // card.removeEventListener("mousedown", closeFullSizePageWithCard, false);
-// card.removeEventListener("touchstart", closeFullSizePageWithCard, false);

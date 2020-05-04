@@ -159,6 +159,7 @@ const runRippleAnimation = ({ gesture, from, to }) => {
       duration: 500,
       easing: "cubic-bezier(0.4, 0, 0.2, 1)",
       // TODO: the last keyframe's transform persisted probably due to display: none; of fullsizePageWithCard
+      // TODO: research into neon-animated-pages more
       // fill: "both"
       // TODO: tweak
       fill: "backwards"

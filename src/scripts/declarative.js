@@ -58,8 +58,14 @@ const slidePages = event => {
       exitAnimationMethod = runSlideLeftAnimation;
       break;
     case BUTTON_IDS.UP:
+      newSelectedPageNumber = selectedPageNumber === MAX_PAGE_NUMBER ? MIN_PAGE_NUMBER : (selectedPageNumber + 1);
+      entryAnimationMethod = runSlideFromTopAnimation;
+      exitAnimationMethod = runSlideDownAnimation;
       break;
     case BUTTON_IDS.DOWN:
+      newSelectedPageNumber = selectedPageNumber === MIN_PAGE_NUMBER ? MAX_PAGE_NUMBER : (selectedPageNumber - 1);
+      entryAnimationMethod = runSlideFromBottomAnimation;
+      exitAnimationMethod = runSlideUpAnimation;
       break;
     default: break;
   }
@@ -180,10 +186,116 @@ const runSlideLeftAnimation = ({ node, transformOrigin, callback }) => {
   }
 };
 
+const runSlideFromTopAnimation = ({ node, transformOrigin, callback }) => {
+  const slideFromTopAnimationKeyframes = new KeyframeEffect(
+    node, [
+      {"transform": "translateY(-100%)"},
+      {"transform": "translateY(0%)"}
+    ], {
+      duration: 500,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      fill: "both"
+    }
+  );
+
+  if (transformOrigin) {
+    node.style.transformOrigin = transformOrigin;
+  } else {
+    node.style.transformOrigin = "0 50%";
+  }
+
+  slideFromTopAnimation = new Animation(slideFromTopAnimationKeyframes, document.timeline);
+  slideFromTopAnimation.play();
+
+  if (callback) {
+    slideFromTopAnimation.onfinish = callback;
+  }
+};
+
+const runSlideDownAnimation = ({ node, transformOrigin, callback }) => {
+  const slideDownAnimationKeyframes = new KeyframeEffect(
+    node, [
+      {"transform": "translateY(0%)"},
+      {"transform": "translateY(100%)"}
+    ], {
+      duration: 500,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      fill: "both"
+    }
+  );
+
+  if (transformOrigin) {
+    node.style.transformOrigin = transformOrigin;
+  } else {
+    node.style.transformOrigin = "0 50%";
+  }
+
+  slideDownAnimation = new Animation(slideDownAnimationKeyframes, document.timeline);
+  slideDownAnimation.play();
+
+  if (callback) {
+    slideDownAnimation.onfinish = callback;
+  }
+};
+
+const runSlideFromBottomAnimation = ({ node, transformOrigin, callback }) => {
+  const slideFromBottomAnimationKeyframes = new KeyframeEffect(
+    node, [
+      {"transform": "translateY(100%)"},
+      {"transform": "translateY(0)"}
+    ], {
+      duration: 500,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      fill: "both"
+    }
+  );
+
+  if (transformOrigin) {
+    node.style.transformOrigin = transformOrigin;
+  } else {
+    node.style.transformOrigin = "0 50%";
+  }
+
+  slideFromBottomAnimation = new Animation(slideFromBottomAnimationKeyframes, document.timeline);
+  slideFromBottomAnimation.play();
+
+  if (callback) {
+    slideFromBottomAnimation.onfinish = callback;
+  }
+};
+
+const runSlideUpAnimation = ({ node, transformOrigin, callback }) => {
+  const slideUpAnimationKeyframes = new KeyframeEffect(
+    node, [
+      {"transform": "translate(0)"},
+      {"transform": "translateY(-100%)"}
+    ], {
+      duration: 500,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+      fill: "both"
+    }
+  );
+
+  if (transformOrigin) {
+    node.style.transformOrigin = transformOrigin;
+  } else {
+    node.style.transformOrigin = "0 50%";
+  }
+
+  slideUpAnimation = new Animation(slideUpAnimationKeyframes, document.timeline);
+  slideUpAnimation.play();
+
+  if (callback) {
+    slideUpAnimation.onfinish = callback;
+  }
+};
+
 for (const arrowButton of arrowButtons) {
   arrowButton.addEventListener("mousedown", slidePages, false);
 }
 
 window.onunload = function() {
-  arrowButton.removeEventListener("mousedown", slidePages, false);
+  for (const arrowButton of arrowButtons) {
+    arrowButton.removeEventListener("mousedown", slidePages, false);
+  }
 }

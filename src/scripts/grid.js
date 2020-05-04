@@ -277,6 +277,8 @@ for (const tile of tiles) {
 fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
 
 window.onunload = function() {
+  for (const tile of tiles) {
+    tile.removeEventListener("mousedown", openFullSizePageWithCard, false);
+  }
   fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
-  card.removeEventListener("mousedown", closeFullSizePageWithCard, false);
 }

@@ -1,0 +1,42 @@
+
+.toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background-color: white;
+  z-index: 12;
+  text-align: left;
+}
+
+.neon-animatable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+div.neon-animatable:nth-child(1),
+neon-animatable:nth-child(6) {
+  background: var(--paper-red-500);
+}
+
+div.neon-animatable:nth-child(2) {
+  background: var(--paper-blue-500);
+}
+
+div.neon-animatable:nth-child(3) {
+  background: var(--paper-orange-500);
+}
+
+div.neon-animatable:nth-child(4) {
+  background: var(--paper-green-500);
+}
+
+div.neon-animatable:nth-child(5) {
+  background: var(--paper-purple-500);
+}

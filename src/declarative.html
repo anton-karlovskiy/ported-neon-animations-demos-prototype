@@ -1,3 +1,22 @@
 
-<!-- ray test touch < -->
-<!-- ray test touch > -->
+{% set pageStylesheets = ["/styles/shared-styles.css", "/styles/declarative.css"] %}
+{% extends "_layout.njk" %}
+
+{% block content %}
+<main>
+  <div class="toolbar">
+    <button on-click="_onPrevClick">&#8678;</button>
+    <button on-click="_onNextClick">&#8680;</button>
+    <button on-click="_onUpClick">&#8679;</button>
+    <button on-click="_onDownClick">&#8681;</button>
+  </div>
+
+  <div class="neon-animated-pages">
+    <div class="neon-animatable">1</div>
+    <div class="neon-animatable">2</div>
+    <div class="neon-animatable">3</div>
+    <div class="neon-animatable">4</div>
+    <div class="neon-animatable">5</div>
+  </div>
+</main>
+{% endblock %}

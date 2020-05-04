@@ -4,10 +4,6 @@ body {
   @apply --layout-fullbleed;
 }
 
-.neon-animated-pages {
-  height: 100vh;
-  position: relative;
-}
 
 .animated-grid {
   position: absolute;

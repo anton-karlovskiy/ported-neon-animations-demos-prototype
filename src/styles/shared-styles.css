@@ -1,4 +1,20 @@
 
+:root {
+  --google-red-100: #f4c7c3;
+  --google-red-300: #e67c73;
+  --google-yellow-100: #fce8b2;
+  --google-yellow-300: #f7cb4d;
+  --google-blue-100: #c6dafc;
+  --google-blue-300: #7baaf7;
+  --google-green-100: #b7e1cd;
+  --google-green-300: #57bb8a;
+  --paper-red-500: #f44336;
+  --paper-blue-500: #2196f3;
+  --paper-orange-500: #ff9800;
+  --paper-green-500: #4caf50;
+  --paper-purple-500: #9c27b0;
+}
+
 .red-100 {
   background: var(--google-red-100);
 }
@@ -29,4 +45,9 @@
 
 .green-300 {
   background: var(--google-green-300);
+}
+
+.neon-animated-pages {
+  height: 100vh;
+  position: relative;
 }

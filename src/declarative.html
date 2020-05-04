@@ -18,25 +18,29 @@
 {% extends "_layout.njk" %}
 
 {% block content %}
-<main>
-  <div class="toolbar">
-    {% for arrowButton in arrowButtons %}
-    <button
-      id="{{arrowButton.id}}"
-      class="arrow-button">
-      {{arrowButton.value | safe}}
-    </button>
-    {% endfor %}
-  </div>
-
-  <div class="neon-animated-pages">
-    {% for page in pages %}
-    <div
-      id="{{page.number}}"
-      class="neon-animatable">
-      {{page.number}}
+  <main>
+    <div class="toolbar">
+      {% for arrowButton in arrowButtons %}
+        <button
+          id="{{arrowButton.id}}"
+          class="arrow-button">
+          {{arrowButton.value | safe}}
+        </button>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-</main>
+
+    <div class="neon-animated-pages">
+      {% for page in pages %}
+        <div
+          id="{{page.number}}"
+          {% if page.number === 1 %}
+            class="neon-animatable iron-selected"
+          {% else %}
+            class="neon-animatable"
+          {% endif %}>
+          {{page.number}}
+        </div>
+      {% endfor %}
+    </div>
+  </main>
 {% endblock %}

@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Ported Neon Animations Demos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <!-- TODO: critical and non-critical css for render blocking resources -->
-  <link rel="stylesheet" href="/styles/main.css" />
-  {% for pageStylesheet in pageStylesheets %}
-    <link rel="stylesheet" href="{{pageStylesheet}}">
-  {% endfor %}
-</head>
-<body>
-  {% include "./template-parts/_header.njk" %}
+  <head>
+    <meta charset="utf-8">
+    <title>Ported Neon Animations Demos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- TODO: critical and non-critical css for render blocking resources -->
+    <link rel="stylesheet" href="/styles/main.css" />
+    {% for pageStylesheet in pageStylesheets %}
+      <link rel="stylesheet" href="{{pageStylesheet}}">
+    {% endfor %}
+  </head>
+  <body>
+    {% include "./template-parts/_header.njk" %}
 
-  {% block content %}
-  {% endblock %}
-  
-  {% include "./template-parts/_footer.njk" %}
+    {% block content %}
+    {% endblock %}
+    
+    {% include "./template-parts/_footer.njk" %}
 
-  {# TODO: async or defer #}
-  {# TODO: not working #}
-  {# <script defer src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script> #}
-  <script async src="./scripts/main.js"></script>
-  {% for script in scripts %}
-    <script async src="{{script}}"></script>
-  {% endfor %}
-</body>
+    {# TODO: async or defer #}
+    {# TODO: not working #}
+    {# <script defer src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script> #}
+    <script async src="./scripts/main.js"></script>
+    {% for script in scripts %}
+      <script async src="{{script}}"></script>
+    {% endfor %}
+  </body>
 </html>
   

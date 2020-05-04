@@ -17,22 +17,22 @@
 {% extends "_layout.njk" %}
 
 {% block content %}
-<main class="neon-animated-pages">
-  <div class="animated-grid">
-    {% for tile in tiles %}
-      <div
-        id="tile"
-        data-color="{{tile.color}}"
-        class="{{"tile " + tile.color + "-" + tile.shade}}">
-        <span>{{tile.value}}</span>
-      </div>
-    {% endfor %}
-  </div>
-  <div
-    style="display: none;"
-    class="fullsize-page-with-card">
-    <div id="fixed"></div>
-    <div id="card"></div>
-  </div>
-</main>
+  <main class="neon-animated-pages">
+    <div class="animated-grid">
+      {% for tile in tiles %}
+        <div
+          id="tile"
+          data-color="{{tile.color}}"
+          class="{{"tile " + tile.color + "-" + tile.shade}}">
+          <span>{{tile.value}}</span>
+        </div>
+      {% endfor %}
+    </div>
+    <div
+      style="display: none;"
+      class="fullsize-page-with-card">
+      <div id="fixed"></div>
+      <div id="card"></div>
+    </div>
+  </main>
 {% endblock %}

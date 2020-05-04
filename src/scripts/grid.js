@@ -3,6 +3,12 @@ const ANIMATION_PLAY_STATE = {
   RUNNING: "running"
 };
 
+const IRON_SELECTED = "iron-selected";
+const TOGGLE_TYPE = {
+  OPEN: "open",
+  CLOSE: "close"
+};
+
 const tiles = document.getElementsByClassName("tile");
 const fixedBackground = document.getElementById("fixed");
 const card = document.getElementById("card");
@@ -84,11 +90,11 @@ const openFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
 
   const selectedColor = event.srcElement.dataset.color;
-  fixedBackground.className = `fixed ${selectedColor}-100`;
-  card.className = `card ${selectedColor}-300`;
+  fixedBackground.className = `${selectedColor}-100`;
+  card.className = `${selectedColor}-300`;
 
   // MEMO: this must be preceded before rippleAnimation(); & runHeroAnimation();
-  toggleFullSizePageWithCard("block");
+  toggleFullSizePageWithCard(TOGGLE_TYPE.OPEN);
 
   runRippleAnimation({
     gesture: {
@@ -112,16 +118,12 @@ const closeFullSizePageWithCard = event => {
   });
 };
 
-const toggleFullSizePageWithCard = (displayPropertyValue = '') => {
+const toggleFullSizePageWithCard = toggleType => {
   const fullsizePageWithCard = document.querySelector(".fullsize-page-with-card");
-  if (!displayPropertyValue) {
-    fullsizePageWithCard.style.display = fullsizePageWithCard.style.display === "none"
-      ? "block"
-      : "none";
+  if (toggleType === TOGGLE_TYPE.OPEN) {
+    fullsizePageWithCard.classList.add(IRON_SELECTED);
   } else {
-    if (fullsizePageWithCard.style.display !== displayPropertyValue) {
-      fullsizePageWithCard.style.display = displayPropertyValue;
-    }
+    fullsizePageWithCard.classList.remove(IRON_SELECTED);
   }
 };
 
@@ -233,7 +235,7 @@ const runFadeOutAnimation = ({ node }) => {
   fadeOutAnimation.onfinish = (() => {
     // TODO: could be simpler
     if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      toggleFullSizePageWithCard("none");
+      toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }
   });
 };
@@ -265,7 +267,7 @@ const runTransformAnimation = ({
   transformAnimation.onfinish = (() => {
     // TODO: the same
     if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
-      toggleFullSizePageWithCard("none");
+      toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }
   });
 };

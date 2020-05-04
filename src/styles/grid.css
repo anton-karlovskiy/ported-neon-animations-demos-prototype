@@ -21,7 +21,7 @@ body {
   right: 0;
 }
 
-.fullsize-page-with-card .fixed {
+.fullsize-page-with-card #fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -29,12 +29,20 @@ body {
   width: 100vw;
 }
 
-.fullsize-page-with-card .card {
+.fullsize-page-with-card #card {
   pointer-events: none;
   position: relative;
   margin: 15vh 15vw 0;
   width: 70vw;
   height: 70vh;
+}
+
+.neon-animated-pages > .fullsize-page-with-card.iron-selected {
+  display: block;
+}
+
+.neon-animated-pages > .fullsize-page-with-card {
+  display: none;
 }
 
 .tile {

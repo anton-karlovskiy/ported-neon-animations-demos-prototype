@@ -42,34 +42,20 @@ const slidePages = event => {
   const arrowButtonId = event.target.id;
   let newSelectedPageNumber;
   let entryNode;
+  let entryAnimationMethod;
+  let exitAnimationMethod;
 
   const exitNode = document.getElementById(selectedPageNumber.toString());
   switch (arrowButtonId) {
     case BUTTON_IDS.PREV:
       newSelectedPageNumber = selectedPageNumber === MIN_PAGE_NUMBER ? MAX_PAGE_NUMBER : (selectedPageNumber - 1);
-      entryNode = document.getElementById(newSelectedPageNumber.toString());
-      showPage(newSelectedPageNumber);
-      setSelectedPageNumber(newSelectedPageNumber);
-      runSlideFromLeftAnimation({node: entryNode});
-      runSlideRightAnimation({
-        node: exitNode,
-        callback: () => {
-          hidePage(exitNode.id);
-        }
-      });
+      entryAnimationMethod = runSlideFromLeftAnimation;
+      exitAnimationMethod = runSlideRightAnimation;
       break;
     case BUTTON_IDS.NEXT:
       newSelectedPageNumber = selectedPageNumber === MAX_PAGE_NUMBER ? MIN_PAGE_NUMBER : (selectedPageNumber + 1);
-      entryNode = document.getElementById(newSelectedPageNumber.toString());
-      showPage(newSelectedPageNumber);
-      setSelectedPageNumber(newSelectedPageNumber);
-      runSlideFromRightAnimation({node: entryNode});
-      runSlideLeftAnimation({
-        node: exitNode,
-        callback: () => {
-          hidePage(exitNode.id);
-        }
-      });
+      entryAnimationMethod = runSlideFromRightAnimation;
+      exitAnimationMethod = runSlideLeftAnimation;
       break;
     case BUTTON_IDS.UP:
       break;
@@ -77,6 +63,17 @@ const slidePages = event => {
       break;
     default: break;
   }
+
+  entryNode = document.getElementById(newSelectedPageNumber.toString());
+  showPage(newSelectedPageNumber);
+  setSelectedPageNumber(newSelectedPageNumber);
+  entryAnimationMethod({node: entryNode});
+  exitAnimationMethod({
+    node: exitNode,
+    callback: () => {
+      hidePage(exitNode.id);
+    }
+  });
 };
 
 const runSlideFromLeftAnimation = ({ node, transformOrigin, callback }) => {

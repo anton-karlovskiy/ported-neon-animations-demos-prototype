@@ -27,7 +27,7 @@ const checkAnimationsRunning = () => {
   return false;
 };
 
-// TODO: document.getAnimations(); not supported
+// MEMO: document.getAnimations(); not supported
 // MEMO: can be checked by https://css-tricks.com/css-animations-vs-web-animations-api/ and https://codepen.io/danwilson/pen/xGBKVq
 const checkAnimationsRunningWithUnsupportedMethod = () => {
   let areAnimationsRunning = false;
@@ -202,7 +202,7 @@ const runHeroAnimation = ({ delay = 0, from, to }) => {
 
   to.style.transformOrigin = "0 0";
   to.style.zIndex = 10000;
-  // TODO: no need and bad effect of black background behind the tile
+  // MEMO: no need and bad effect of black background behind the tile
   // from.style.visibility = "hidden";
 
   heroAnimation = new Animation(heroAnimationKeyframes, document.timeline);
@@ -233,7 +233,7 @@ const runFadeOutAnimation = ({ node }) => {
   fadeOutAnimation.play();
 
   fadeOutAnimation.onfinish = (() => {
-    // TODO: could be simpler
+    // MEMO: could be simpler
     if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
       toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }
@@ -265,7 +265,7 @@ const runTransformAnimation = ({
   transformAnimation.play();
 
   transformAnimation.onfinish = (() => {
-    // TODO: the same
+    // MEMO: the same
     if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
       toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }

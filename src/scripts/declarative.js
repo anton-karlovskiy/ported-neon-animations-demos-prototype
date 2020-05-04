@@ -32,6 +32,7 @@ const showPage = pageNumber => {
 };
 
 const hidePage = pageNumber => {
+  if (selectedPageNumber !== pageNumber) return;
   const page = document.getElementById(pageNumber.toString());
   page.classList.remove(IRON_SELECTED);
 };

@@ -181,7 +181,6 @@ const runRippleAnimation = ({ gesture, from, to }) => {
 const runHeroAnimation = ({ delay = 0, from, to }) => {
   const fromRect = from.getBoundingClientRect();
   // TODO: this might not be required once we resolve animation-fill-mode--not--working issue
-  // 1. we can try to resolve animation-fill-mode--not--working issue by using z-index instead of display: none;
   const toRect = getAdjustedBoundingClientReact(to);
 
   const deltaLeft = fromRect.left - toRect.left;

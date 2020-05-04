@@ -276,6 +276,7 @@ for (const tile of tiles) {
 
 fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
 
-// TODO: remove those event listeners
-// fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
-// card.removeEventListener("mousedown", closeFullSizePageWithCard, false);
+window.onunload = function() {
+  fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
+  card.removeEventListener("mousedown", closeFullSizePageWithCard, false);
+}

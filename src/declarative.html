@@ -1,22 +1,42 @@
 
 {% set pageStylesheets = ["/styles/shared-styles.css", "/styles/declarative.css"] %}
+{% set scripts = ["/scripts/declarative.js"] %}
+{% set pages = [
+  {number: 1},
+  {number: 2},
+  {number: 3},
+  {number: 4},
+  {number: 5}
+] %}
+{% set arrowButtons = [
+  {value: "&#8678;", id: "prev"},
+  {value: "&#8680;", id: "next"},
+  {value: "&#8679;", id: "up"},
+  {value: "&#8681;", id: "down"}
+] %}
+
 {% extends "_layout.njk" %}
 
 {% block content %}
 <main>
   <div class="toolbar">
-    <button on-click="_onPrevClick">&#8678;</button>
-    <button on-click="_onNextClick">&#8680;</button>
-    <button on-click="_onUpClick">&#8679;</button>
-    <button on-click="_onDownClick">&#8681;</button>
+    {% for arrowButton in arrowButtons %}
+    <button
+      id="{{arrowButton.id}}"
+      class="arrow-button">
+      {{arrowButton.value | safe}}
+    </button>
+    {% endfor %}
   </div>
 
   <div class="neon-animated-pages">
-    <div class="neon-animatable">1</div>
-    <div class="neon-animatable">2</div>
-    <div class="neon-animatable">3</div>
-    <div class="neon-animatable">4</div>
-    <div class="neon-animatable">5</div>
+    {% for page in pages %}
+    <div
+      id="{{page.number}}"
+      class="neon-animatable">
+      {{page.number}}
+    </div>
+    {% endfor %}
   </div>
 </main>
 {% endblock %}

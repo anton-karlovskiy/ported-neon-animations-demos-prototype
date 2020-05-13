@@ -1,8 +1,242 @@
 
-/* ray test touch < */
-body {
+/* ray test touch << */
+.blue-100 {
+  background-color: #c6dafc;
+}
+
+.blue-300 {
+  background-color: #31425B;
+  color: #FFFFFF;
+}
+
+.red-100 {
+  background-color: #E61D62;
+}
+
+.red-300 {
+  background-color: #A41251;
+  color: #FFFFFF;
+}
+
+.purple-100 {
+  background-color: #B11972;
+}
+
+.purple-300 {
+  background-color: #72185F;
+  color: #FFFFFF;
+}
+
+/* TODO: vivid-100 */
+
+.vivid-300 {
+  background-color: #9A1E46;
+  color: #FFFFFF;
+}
+
+/* TODO: mulberry-100 */
+
+.mulberry-300 {
+  background-color: #501813;
+  color: #FFFFFF;
+}
+
+.yellow-100 {
+  background-color: #fce8b2;
+}
+
+/* TODO: duplication */
+/* .yellow-300 {
+  background-color: #f7cb4d;
+} */
+
+.yellow-300 {
+  background-color: #D9BF00;
+  color: #212121;
+}
+
+/* TODO: sap-100 */
+
+.sap-300 {
+  background-color: #4C7B35;
+  color: #FFFFFF;
+}
+
+/* TODO: jagular-100 */
+
+.jagular-300 {
+  background-color: #292830;
+  color: #FFFFFF;
+}
+
+/* TODO: athens-100 */
+
+.athens-300 {
+  background-color: #DFDFDF;
+}
+
+/* TODO: egyptian-blue-100 */
+
+.egyptian-blue-300 {
+  background-color: #1441A4;
+  color: #FFFFFF;
+}
+
+/* TODO: william-100 */
+
+.william-300 {
+  background-color: #3C6875;
+  color: #FFFFFF;
+}
+
+/* TODO: charcoal-100 */
+
+.charcoal-300 {
+  background-color: #32444D;
+  color: #FFFFFF;
+}
+
+/* TODO: not used */
+/* .green-100 {
+  background-color: #b7e1cd;
+}
+
+.green-300 {
+  background-color: #57bb8a;
+}
+
+.jackson-300 {
+  background-color: #383C80;
+  color: #FFFFFF;
+}
+
+.portrage-300 {
+  background-color: #8AA2D6;
+  color: #FFFFFF;
+}
+
+.white {
+  background-color: #FFFFFF;
+}
+
+.yuna-yellow {
+  background-color: #FFEA01;
+  color: #000000;
+}
+
+.ellie-blue {
+  background-color: #03E5FF;
+  color: #000000;
+}
+
+.pharrell-fab {
+  background-color: #212121;
+  color: #FFFFFF;
+} */
+
+.tile {
+  float: left;
+  width: calc(100% / 6);
+  height: calc(100% / 3);
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid black;
+
+  /**
+   * Display the middle of the album art unless we
+   * can guarantee background -> contain will look
+   * better.
+   */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.tile:nth-of-type(1) {
+  width: calc(100% / 3);
+  height: calc(100% / 3 * 2);
+}
+
+.tile:nth-of-type(6) {
+  width: calc(100% / 3);
+  height: calc(100% / 3 * 2);
+}
+
+.tile:nth-of-type(9) {
+  position: absolute;
+  top: calc(100% / 3 * 2);
+  left: 0;
+  width: calc(100% / 6);
+  height: calc(100% / 3);
+}
+
+.tile:nth-of-type(10) {
+  position: absolute;
+  top: calc(100% / 3 * 2);
+  left: calc(100% / 6);
+  width: calc(100% / 6);
+  height: calc(100% / 3);
+}
+
+.footer {
+  box-sizing: border-box;
+  padding: 16px;
+  font-size: 16px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.footer .album, .footer .artist {
+  white-space: nowrap;
   overflow: hidden;
-  @apply --layout-fullbleed;
+  text-overflow: ellipsis;
+}
+
+/* TODO: not used */
+/* .tile .animated-grid {
+  font-size: 16px;
+  line-height: 16px;
+} */
+
+.tile .artist {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.tile:nth-of-type(8), .tile:nth-of-type(9) {
+  background-size: cover;
+  background-position: 50%;
+}
+
+@media (min-width: 1288px) {
+  /* There's enough vert/horz space for artwork to use contain */
+  .tile {
+    background-size: contain;
+    background-position: initial;
+  }
+
+  /* For tiles that still don't work well on contain, revert to cover */
+  .tile:nth-of-type(1), .tile:nth-of-type(7), .tile:nth-of-type(6) {
+    background-size: cover;
+    background-position: 50%;
+  }
+}
+@media (max-width: 640px) {
+  .tile,
+  .tile:nth-of-type(n) {
+    width: calc(100%/2);
+    height: calc(100% / 3);
+    position: relative;
+  }
+}
+/* ray test touch >> */
+
+/* ray test touch < */
+.neon-animated-pages {
+  height: 100vh;
+  position: relative;
 }
 
 .animated-grid {
@@ -11,6 +245,11 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+/* body {
+  overflow: hidden;
+  @apply --layout-fullbleed;
 }
 
 .fullsize-page-with-card {
@@ -45,54 +284,7 @@ body {
   display: none;
 }
 
-.tile {
-  color: var(--palette-common-black);
-  font-weight: var(--typography-font-weight-bold);
-  font-size: 20px;
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% / 6);
-  height: calc(100% / 3);
-}
-
 .tile * {
   pointer-events: none;
-}
-
-.tile:nth-of-type(1) {
-  width: calc(100% / 3);
-  height: calc(100% / 3 * 2);
-}
-
-.tile:nth-of-type(4) {
-  width: calc(100% / 3);
-}
-
-.tile:nth-of-type(5) {
-  width: calc(100% / 3);
-  height: calc(100% / 3 * 2);
-}
-
-.tile:nth-of-type(8) {
-  width: calc(100% / 3);
-  height: calc(100% / 3);
-}
-
-.tile:nth-of-type(9) {
-  position: absolute;
-  top: calc(100% / 3 * 2);
-  left: 0;
-  width: calc(100% / 6);
-  height: calc(100% / 3);
-}
-
-.tile:nth-of-type(10) {
-  position: absolute;
-  top: calc(100% / 3 * 2);
-  left: calc(100% / 6);;
-  width: calc(100% / 6);
-  height: calc(100% / 3);
-}
+} */
 /* ray test touch > */

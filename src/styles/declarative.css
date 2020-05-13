@@ -35,21 +35,21 @@
 
 div.neon-animatable:nth-child(1),
 neon-animatable:nth-child(6) {
-  background: var(--paper-red-500);
+  background-color: var(--paper-red-500);
 }
 
 div.neon-animatable:nth-child(2) {
-  background: var(--paper-blue-500);
+  background-color: var(--paper-blue-500);
 }
 
 div.neon-animatable:nth-child(3) {
-  background: var(--paper-orange-500);
+  background-color: var(--paper-orange-500);
 }
 
 div.neon-animatable:nth-child(4) {
-  background: var(--paper-green-500);
+  background-color: var(--paper-green-500);
 }
 
 div.neon-animatable:nth-child(5) {
-  background: var(--paper-purple-500);
+  background-color: var(--paper-purple-500);
 }

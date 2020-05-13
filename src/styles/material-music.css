@@ -1,5 +1,4 @@
 
-/* ray test touch << */
 .blue-100 {
   background-color: #c6dafc;
 }
@@ -52,7 +51,7 @@
 
 .yellow-300 {
   background-color: #D9BF00;
-  color: #212121;
+  color: #000000;
 }
 
 /* TODO: sap-100 */
@@ -73,6 +72,7 @@
 
 .athens-300 {
   background-color: #DFDFDF;
+  color: #000000;
 }
 
 /* TODO: egyptian-blue-100 */
@@ -226,17 +226,20 @@
 @media (max-width: 640px) {
   .tile,
   .tile:nth-of-type(n) {
-    width: calc(100%/2);
+    width: calc(100% / 2);
     height: calc(100% / 3);
     position: relative;
   }
 }
-/* ray test touch >> */
 
 /* ray test touch < */
 .neon-animated-pages {
   height: 100vh;
   position: relative;
+}
+
+body {
+  overflow: hidden;
 }
 
 .animated-grid {
@@ -247,12 +250,7 @@
   right: 0;
 }
 
-/* body {
-  overflow: hidden;
-  @apply --layout-fullbleed;
-}
-
-.fullsize-page-with-card {
+/* .fullsize-page-with-card {
   position: absolute;
   top: 0;
   left: 0;

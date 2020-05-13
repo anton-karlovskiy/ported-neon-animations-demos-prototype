@@ -134,6 +134,23 @@
   color: #FFFFFF;
 } */
 
+.neon-animated-pages {
+  height: 100vh;
+  position: relative;
+}
+
+body {
+  overflow: hidden;
+}
+
+.animated-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 .tile {
   float: left;
   width: calc(100% / 6);
@@ -150,6 +167,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
+}
+
+.tile * {
+  pointer-events: none;
 }
 
 .tile:nth-of-type(1) {
@@ -232,48 +253,6 @@
   }
 }
 
-/* ray test touch < */
-.neon-animated-pages {
-  height: 100vh;
-  position: relative;
-}
-
-body {
-  overflow: hidden;
-}
-
-.animated-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-/* .fullsize-page-with-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.fullsize-page-with-card #fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-.fullsize-page-with-card #card {
-  pointer-events: none;
-  position: relative;
-  margin: 15vh 15vw 0;
-  width: 70vw;
-  height: 70vh;
-}
-
 .neon-animated-pages > .fullsize-page-with-card.iron-selected {
   display: block;
 }
@@ -282,12 +261,15 @@ body {
   display: none;
 }
 
-.tile * {
-  pointer-events: none;
-} */
-/* ray test touch > */
+.fullsize-page-with-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 
-.fixed {
+.fullsize-page-with-card .fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -295,7 +277,7 @@ body {
   width: 100vw;
 }
 
-.card {
+.fullsize-page-with-card #card {
   position: relative;
   margin: 250px 275px 0;
   min-height: 700px;

@@ -287,7 +287,6 @@ body {
 } */
 /* ray test touch > */
 
-/* ray test touch < */
 .fixed {
   position: fixed;
   top: 0;
@@ -299,7 +298,7 @@ body {
 .card {
   position: relative;
   margin: 250px 275px 0;
-  height: 700px;
+  min-height: 700px;
 }
 
 .fade {
@@ -422,6 +421,14 @@ x-songlist {
     flex-direction: column;
   }
 
+  .album-art {
+    width: 100%;
+    height: auto;
+  }
+  .album-art img {
+    height: auto;
+  }
+
   .album-details .album-text {
     margin-top: 10px;
     margin-left: 25px;
@@ -441,9 +448,9 @@ x-songlist {
     display: none;
   } */
 
+  /* TODO: missing component */
   #card paper-fab {
     right: 17px;
     top: 388px;
   }
 }
-/* ray test touch > */

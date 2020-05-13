@@ -27,7 +27,7 @@
     fab: "ellie-blue"
   },
   {
-    value: 8,
+    value: 4,
     color: "vivid",
     artist: "One Republic",
     album: "Native",
@@ -42,7 +42,7 @@
     url: "assets/images/strokes-comedownmachine.jpg"
   },
   {
-    value: 4,
+    value: 6,
     color: "yellow",
     fab: "pharrell-fab",
     artist: "Pharrell Williams",
@@ -51,7 +51,7 @@
     largeUrl: "assets/images/20150204-pharrellwilliams-sgp.jpg"
   },
   {
-    value: 6,
+    value: 7,
     color: "sap",
     artist: "Flipsyde",
     album: "We The People",
@@ -59,7 +59,7 @@
     largeUrl: "assets/images/flipside.jpg"
   },
   {
-    value: 4,
+    value: 8,
     color: "jagular",
     fab: "jagular",
     artist: "Rhye",
@@ -68,7 +68,7 @@
     largeUrl: "assets/images/rhye-woman.jpeg"
   },
   {
-    value: 7,
+    value: 9,
     color: "athens",
     artist: "Jamie Lidell",
     album: "Jamie Lidell",
@@ -84,7 +84,7 @@
     largeUrl: "assets/images/neon-trees-pop-psychology.jpg"
   },
   {
-    value: 9,
+    value: 11,
     color: "william",
     artist: "Foster The People",
     album: "Supermodel",
@@ -92,7 +92,7 @@
     largeUrl: "assets/images/foster-the-people.jpg"
   },
   {
-    value: 10,
+    value: 12,
     color: "charcoal",
     artist: "Fitz And The Tantrums",
     album: "More Than Just A Dream",
@@ -121,9 +121,61 @@
         </div>
       {% endfor %}
     </div>
-    <!-- <div class="fullsize-page-with-card">
-      <div id="fixed"></div>
-      <div id="card"></div>
-    </div> -->
+    <!-- ray test touch < -->
+    <div class="fullsize-page-with-card">
+      <div
+        id="fixed"
+        class="{{"fixed " + "red" + "-100"}}"></div>
+      <div
+        class="fixed fade"
+        style="background-image: url(assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg); background-size: cover;">
+      </div>
+      <!-- TODO: missing component -->
+      <!-- <paper-toolbar class="fixed-background-toolbar">
+        <paper-icon-button icon="arrow-back"></paper-icon-button>
+        <span>[[artist]]</span>
+        <span class="flex"></span>
+        <paper-icon-button icon="search"></paper-icon-button>
+      </paper-toolbar> -->
+
+      <!-- card for the fullsize view -->
+      <div id="card" class="{{"card " + "red" + "-300"}}">
+        <div class="container">
+          <!-- album cover -->
+          <div class="album-art">
+            <img src="assets/images/artworks-000060971310-g3znsu-t500x500.jpg">
+          </div>
+          <!-- details panel -->
+          <div class="album-details">
+            <!-- TODO: missing component -->
+            <!-- <paper-toolbar class="album-toolbar">
+              <span class="flex"></span>
+              <paper-icon-button icon="star"></paper-icon-button>
+            </paper-toolbar> -->
+            <div class="album-text">
+              <span class="album-name">Lights and Camera</span>
+              <span class="artist-name">Yuna</span>
+            </div>
+            <div class="{{"lowerbar flex " + "red" + "-100"}}">
+              <!-- TODO: missing component -->
+              <!-- <paper-fab icon="av:playlist-add" class$="[[_computeFabClass(fab)]]"></paper-fab> -->
+              <div class="">
+                <span class=""></span>
+                <!-- TODO: missing icon -->
+                <iron-icon icon="av:fast-rewind"></iron-icon>
+                <!-- TODO: missing icon -->
+                <iron-icon icon="av:play-arrow" class=""></iron-icon>
+                <!-- TODO: missing icon -->
+                <iron-icon icon="av:fast-forward"></iron-icon>
+                <span class=""></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TODO: to be expanded -->
+        <!-- <x-songlist class="fade"></x-songlist> -->
+      </div>
+    </div>
+    <!-- ray test touch > -->
   </main>
 {% endblock %}

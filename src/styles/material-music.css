@@ -286,3 +286,135 @@ body {
   pointer-events: none;
 } */
 /* ray test touch > */
+
+/* ray test touch < */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  margin: 250px 275px 0;
+  height: 700px;
+}
+
+.fade {
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+.album-art {
+  width: 360px;
+}
+.album-art img {
+  width: 360px;
+}
+
+.album-name {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.artist-name {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.album-details .album-text {
+  margin-left: 40px;
+  max-height: 300px;
+  min-height: 242px;
+}
+
+.album-toolbar {
+  background: transparent;
+}
+
+.lowerbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+x-songlist {
+  height: 100%;
+}
+
+#card paper-fab {
+  position: absolute;
+  right: 30px;
+  top: 278px;
+}
+
+.fixed-background-toolbar {
+  background: transparent;
+}
+
+@media (max-width: 1288px) {
+  #card {
+    margin: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  #card .container {
+    /* @apply(--layout-vertical); */
+  }
+
+  #card .album-art {
+    height: 360px;
+  }
+
+  #card .album-art img {
+    width: 100%;
+    /* @apply(--layout-fit); */
+  }
+
+  #card .album-details .album-text {
+    margin-left: 25px;
+    min-height: 90px;
+    max-height: none;
+    margin-top: 10px;
+  }
+
+  #card .album-name {
+    font-size: 30px;
+  }
+
+  #card .artist-name {
+    font-size: 20px;
+  }
+
+  .fixed-background-toolbar {
+    display: none;
+  }
+
+  #card paper-fab {
+    right: 17px;
+    top: 388px;
+  }
+}
+/* ray test touch > */

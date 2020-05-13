@@ -7,7 +7,8 @@
     color: "blue",
     artist: "Kodaline",
     album: "In A Perfect World",
-    url: "assets/images/kodaline.jpg"
+    url: "assets/images/kodaline.jpg",
+    largeUrl: "assets/images/large-kodaline.jpg"
   },
   {
     value: 2,
@@ -109,27 +110,24 @@
       {% for tile in tiles %}
         <div
           id="tile"
+          data-color="{{tile.color}}"
+          data-url="{{tile.url}}"
+          data-largeurl="{{tile.largeUrl}}"
           class="{{"tile " + tile.color + "-" + 300}}"
           style="background-image: url({{tile.url}});">
           <div class="{{"footer " + tile.color + "-" + 300}}">
-            <!-- TODO: might not needed -->
-            <div class="">
-              <div class="album">{{tile.album}}</div>
-              <div class="artist">{{tile.artist}}</div>
-            </div>
+            <div class="album">{{tile.album}}</div>
+            <div class="artist">{{tile.artist}}</div>
           </div>
         </div>
       {% endfor %}
     </div>
-    <!-- ray test touch < -->
     <div class="fullsize-page-with-card">
-      <div
-        id="fixed"
-        class="{{"fixed " + "red" + "-100"}}">
+      <div id="fixed">
       </div>
       <div
-        class="fixed fade"
-        style="background-image: url(assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg); background-size: cover;">
+        id="bg-img"
+        class="fade">
       </div>
       <!-- TODO: missing component -->
       <!-- <paper-toolbar class="fixed-background-toolbar">
@@ -140,7 +138,7 @@
       </paper-toolbar> -->
 
       <!-- card for the fullsize view -->
-      <div id="card" class="{{"card " + "red" + "-300"}}">
+      <div id="card">
         <div class="container">
           <!-- album cover -->
           <div class="album-art">
@@ -177,6 +175,5 @@
         <!-- <x-songlist class="fade"></x-songlist> -->
       </div>
     </div>
-    <!-- ray test touch > -->
   </main>
 {% endblock %}

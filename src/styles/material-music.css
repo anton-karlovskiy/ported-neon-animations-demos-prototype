@@ -26,14 +26,18 @@
   color: #FFFFFF;
 }
 
-/* TODO: vivid-100 */
+.vivid-100 {
+  background-color: #ae4b6b;
+}
 
 .vivid-300 {
   background-color: #9A1E46;
   color: #FFFFFF;
 }
 
-/* TODO: mulberry-100 */
+.mulberry-100 {
+  background-color: #734642;
+}
 
 .mulberry-300 {
   background-color: #501813;
@@ -54,42 +58,54 @@
   color: #000000;
 }
 
-/* TODO: sap-100 */
+.sap-100 {
+  background-color: #6f955d;
+}
 
 .sap-300 {
   background-color: #4C7B35;
   color: #FFFFFF;
 }
 
-/* TODO: jagular-100 */
+.jagular-100 {
+  background-color: #535359;
+}
 
 .jagular-300 {
   background-color: #292830;
   color: #FFFFFF;
 }
 
-/* TODO: athens-100 */
+.athens-100 {
+  background-color: #e5e5e5;
+}
 
 .athens-300 {
   background-color: #DFDFDF;
   color: #000000;
 }
 
-/* TODO: egyptian-blue-100 */
+.egyptian-blue-100 {
+  background-color: #4367b6;
+}
 
 .egyptian-blue-300 {
   background-color: #1441A4;
   color: #FFFFFF;
 }
 
-/* TODO: william-100 */
+.william-100 {
+  background-color: #638690;
+}
 
 .william-300 {
   background-color: #3C6875;
   color: #FFFFFF;
 }
 
-/* TODO: charcoal-100 */
+.charcoal-100 {
+  background-color: #5b6970;
+}
 
 .charcoal-300 {
   background-color: #32444D;
@@ -269,7 +285,7 @@ body {
   right: 0;
 }
 
-.fullsize-page-with-card .fixed {
+.fullsize-page-with-card #fixed, .fullsize-page-with-card #bg-img {
   position: fixed;
   top: 0;
   left: 0;
@@ -277,7 +293,13 @@ body {
   width: 100vw;
 }
 
+.fullsize-page-with-card #bg-img {
+  pointer-events: none;
+  background-size: cover;
+}
+
 .fullsize-page-with-card #card {
+  pointer-events: none;
   position: relative;
   margin: 250px 275px 0;
   min-height: 700px;

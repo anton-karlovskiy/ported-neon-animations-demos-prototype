@@ -196,8 +196,17 @@
             </div>
           </div>
         </div>
-        <!-- TODO: to be expanded -->
-        <!-- <x-songlist class="fade"></x-songlist> -->
+        <div class="album-list">
+          <table>
+            {% for index in range(0, 20) -%}
+              <tr>
+                <td>{{index}}</td>
+                <td>Song name</td>
+                <td>3:54</td>
+              </tr>
+            {%- endfor %}
+          </table>
+        </div>
       </div>
     </div>
   </main>

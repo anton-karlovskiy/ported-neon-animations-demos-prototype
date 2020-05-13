@@ -1,4 +1,4 @@
-
+/* MEMO: common styling */
 .blue-100 {
   background-color: #c6dafc;
 }
@@ -154,6 +154,7 @@ body {
   overflow: hidden;
 }
 
+/* MEMO: animated grid */
 .animated-grid {
   position: absolute;
   top: 0;
@@ -258,6 +259,7 @@ body {
   }
 }
 
+/* MEMO: fullsize page with card */
 .neon-animated-pages > .fullsize-page-with-card.iron-selected {
   display: block;
 }
@@ -460,4 +462,34 @@ x-songlist {
     right: 17px;
     top: 388px;
   }
+}
+
+/* MEMO: song list */
+.album-list {
+  background: #FFFFFF;
+  height: 100%;
+  color: black;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.album-list table {
+  width: 100%;
+}
+
+.album-list td:nth-child(1) {
+  width: 10%;
+  text-align: left;
+  color: #ADADAD;
+}
+
+.album-list td:nth-child(2) {
+  width: 60%;
+  text-align: left;
+}
+
+.album-list td:nth-child(3) {
+  width: 20%;
+  text-align: right;
+  color: #ADADAD;
 }

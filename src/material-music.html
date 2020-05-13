@@ -113,6 +113,8 @@
           data-color="{{tile.color}}"
           data-url="{{tile.url}}"
           data-largeurl="{{tile.largeUrl}}"
+          data-album="{{tile.album}}"
+          data-artist="{{tile.artist}}"
           class="{{"tile " + tile.color + "-" + 300}}"
           style="background-image: url({{tile.url}});">
           <div class="{{"footer " + tile.color + "-" + 300}}">
@@ -142,7 +144,7 @@
         <div class="container">
           <!-- album cover -->
           <div class="album-art">
-            <img src="assets/images/artworks-000060971310-g3znsu-t500x500.jpg">
+            <img src="" alt="Album Art Profile">
           </div>
           <!-- details panel -->
           <div class="album-details">
@@ -152,10 +154,10 @@
               <paper-icon-button icon="star"></paper-icon-button>
             </paper-toolbar> -->
             <div class="album-text">
-              <span class="album-name">Lights and Camera</span>
-              <span class="artist-name">Yuna</span>
+              <span class="album-name"></span>
+              <span class="artist-name"></span>
             </div>
-            <div class="{{"lowerbar flex " + "red" + "-100"}}">
+            <div id="lowerbar">
               <!-- TODO: missing component -->
               <!-- <paper-fab icon="av:playlist-add" class$="[[_computeFabClass(fab)]]"></paper-fab> -->
               <div class="">

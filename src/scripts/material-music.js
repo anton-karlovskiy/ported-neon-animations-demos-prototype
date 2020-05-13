@@ -14,6 +14,9 @@ const fixedBackground = document.getElementById("fixed");
 const card = document.getElementById("card");
 const bgImg = document.getElementById("bg-img");
 const albumArtImg = document.querySelector(".album-art > img");
+const lowerBar = document.getElementById("lowerbar");
+const albumName = document.querySelector(".album-name");
+const artistName = document.querySelector(".artist-name");
 let rippleAnimation;
 let heroAnimation;
 let fadeOutAnimation;
@@ -79,10 +82,15 @@ const openFullSizePageWithCard = event => {
   const selectedColor = event.srcElement.dataset.color;
   const selectedLargeUrl = event.srcElement.dataset.largeurl;
   const selectedUrl = event.srcElement.dataset.url;
-  fixedBackground.className = `${selectedColor}-100`;
-  card.className = `${selectedColor}-300`;
+  const selectedAlbum = event.srcElement.dataset.album;
+  const selectedArtist = event.srcElement.dataset.artist;
   bgImg.style["background-image"] = `url(${selectedLargeUrl})`;
   albumArtImg.src = selectedUrl;
+  fixedBackground.className = `${selectedColor}-100`;
+  card.className = `${selectedColor}-300`;
+  lowerBar.className = `${selectedColor}-100`;
+  albumName.innerHTML = selectedAlbum;
+  artistName.innerHTML = selectedArtist;
 
   // MEMO: this must be preceded before rippleAnimation(); & runHeroAnimation();
   toggleFullSizePageWithCard(TOGGLE_TYPE.OPEN);

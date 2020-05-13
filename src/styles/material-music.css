@@ -48,11 +48,6 @@
   background-color: #fce8b2;
 }
 
-/* TODO: duplication */
-/* .yellow-300 {
-  background-color: #f7cb4d;
-} */
-
 .yellow-300 {
   background-color: #D9BF00;
   color: #000000;
@@ -230,12 +225,6 @@ body {
   text-overflow: ellipsis;
 }
 
-/* TODO: not used */
-/* .tile .animated-grid {
-  font-size: 16px;
-  line-height: 16px;
-} */
-
 .tile .artist {
   font-weight: 300;
   font-size: 14px;
@@ -332,6 +321,7 @@ body {
 
 #card .container {
   display: flex;
+  user-select: none;
 }
 
 .album-art {
@@ -381,7 +371,7 @@ body {
   background: transparent;
 } */
 
-.lowerbar {
+#lowerbar {
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -415,7 +405,7 @@ x-songlist {
 }
 
 @media (max-width: 1288px) {
-  #card {
+  .fullsize-page-with-card #card {
     margin: 0;
   }
 }

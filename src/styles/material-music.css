@@ -327,50 +327,88 @@ body {
   to   {opacity: 1;}
 }
 
+#card .container {
+  display: flex;
+}
+
 .album-art {
   width: 360px;
+  height: 360px;
 }
 .album-art img {
-  width: 360px;
+  width: 100%;
+  height: 100%;
 }
 
 .album-name {
+  display: block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   font-size: 40px;
   font-weight: 300;
 }
 
 .artist-name {
+  display: block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   font-size: 20px;
   font-weight: 300;
 }
 
-.album-details .album-text {
-  margin-left: 40px;
-  max-height: 300px;
-  min-height: 242px;
+.album-details {
+  display: flex;
+  flex-direction: column;
 }
 
-.album-toolbar {
-  background: transparent;
+.album-details .album-text {
+  flex-grow: 1;
+  text-align: left;
+  margin-left: 40px;
 }
+
+/* TODO: missing component */
+/* .album-toolbar {
+  background: transparent;
+} */
 
 .lowerbar {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
+/* TODO: to be expanded */
 x-songlist {
   height: 100%;
 }
 
+/* TODO: missing component */
 #card paper-fab {
   position: absolute;
   right: 30px;
   top: 278px;
 }
 
-.fixed-background-toolbar {
+/* TODO: missing component */
+/* .fixed-background-toolbar {
   background: transparent;
+} */
+
+@media (min-width: 640px) {
+  .album-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .album-details .album-text {
+    padding: 60px 60px 60px 0;
+  }
 }
 
 @media (max-width: 1288px) {
@@ -381,36 +419,27 @@ x-songlist {
 
 @media (max-width: 640px) {
   #card .container {
-    /* @apply(--layout-vertical); */
+    flex-direction: column;
   }
 
-  #card .album-art {
-    height: 360px;
-  }
-
-  #card .album-art img {
-    width: 100%;
-    /* @apply(--layout-fit); */
-  }
-
-  #card .album-details .album-text {
+  .album-details .album-text {
+    margin-top: 10px;
     margin-left: 25px;
     min-height: 90px;
-    max-height: none;
-    margin-top: 10px;
   }
 
-  #card .album-name {
+  .album-name {
     font-size: 30px;
   }
 
-  #card .artist-name {
+  .artist-name {
     font-size: 20px;
   }
 
-  .fixed-background-toolbar {
+  /* TODO: missing component */
+  /* .fixed-background-toolbar {
     display: none;
-  }
+  } */
 
   #card paper-fab {
     right: 17px;

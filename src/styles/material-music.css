@@ -368,11 +368,6 @@ body {
   margin-left: 40px;
 }
 
-/* TODO: missing component */
-/* .album-toolbar {
-  background: transparent;
-} */
-
 #lowerbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -391,22 +386,12 @@ body {
   fill: #FFFFFF
 }
 
-/* TODO: to be expanded */
-x-songlist {
-  height: 100%;
-}
-
 /* TODO: missing component */
 #card paper-fab {
   position: absolute;
   right: 30px;
   top: 278px;
 }
-
-/* TODO: missing component */
-/* .fixed-background-toolbar {
-  background: transparent;
-} */
 
 @media (min-width: 640px) {
   .album-details {
@@ -451,11 +436,6 @@ x-songlist {
   .artist-name {
     font-size: 20px;
   }
-
-  /* TODO: missing component */
-  /* .fixed-background-toolbar {
-    display: none;
-  } */
 
   /* TODO: missing component */
   #card paper-fab {

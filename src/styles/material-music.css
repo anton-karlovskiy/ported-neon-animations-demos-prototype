@@ -377,6 +377,7 @@ body {
   justify-content: space-between;
   max-width: 360px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .music-control svg {

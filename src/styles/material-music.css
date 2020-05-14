@@ -107,43 +107,33 @@
   color: #FFFFFF;
 }
 
-/* TODO: not used */
-/* .green-100 {
+/* MEMO: fab color */
+.green-100 {
   background-color: #b7e1cd;
 }
-
 .green-300 {
   background-color: #57bb8a;
 }
-
 .jackson-300 {
   background-color: #383C80;
   color: #FFFFFF;
 }
-
 .portrage-300 {
   background-color: #8AA2D6;
   color: #FFFFFF;
 }
-
-.white {
-  background-color: #FFFFFF;
-}
-
 .yuna-yellow {
   background-color: #FFEA01;
   color: #000000;
 }
-
 .ellie-blue {
   background-color: #03E5FF;
   color: #000000;
 }
-
 .pharrell-fab {
   background-color: #212121;
   color: #FFFFFF;
-} */
+}
 
 .neon-animated-pages {
   height: 100vh;
@@ -367,6 +357,7 @@ body {
 }
 
 #lowerbar {
+  position: relative;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -385,11 +376,23 @@ body {
   fill: #FFFFFF
 }
 
-/* TODO: missing component */
-#card paper-fab {
+#fab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
   right: 30px;
-  top: 278px;
+  top: -50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  transition: all 0.1s ease-in-out;
+}
+
+#fab:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 @media (min-width: 640px) {
@@ -433,10 +436,14 @@ body {
     font-size: 20px;
   }
 
-  /* TODO: missing component */
-  #card paper-fab {
-    right: 17px;
-    top: 388px;
+  .music-control {
+    padding: 0 48px;
+  }
+
+  #fab {
+    width: 48px;
+    height: 48px;
+    right: 12px;
   }
 }
 

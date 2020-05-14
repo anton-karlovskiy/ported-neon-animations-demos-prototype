@@ -5,6 +5,7 @@
   {
     value: 1,
     color: "blue",
+    fab: "green-100",
     artist: "Kodaline",
     album: "In A Perfect World",
     profile: "/assets/images/kodaline.jpg",
@@ -21,15 +22,16 @@
   {
     value: 3,
     color: "purple",
+    fab: "ellie-blue",
     artist: "Ellie Goulding",
     album: "Halcyon Days",
     profile: "/assets/images/ellie-goulding-halcyon-days-500x500.jpg",
-    background: "/assets/images/ellie-goulding-bg.jpg",
-    fab: "ellie-blue"
+    background: "/assets/images/ellie-goulding-bg.jpg"
   },
   {
     value: 4,
     color: "vivid",
+    fab: "green-300",
     artist: "One Republic",
     album: "Native",
     profile: "/assets/images/one-republic.jpg",
@@ -38,6 +40,7 @@
   {
     value: 5,
     color: "mulberry",
+    fab: "yuna-yellow",
     artist: "The Strokes",
     album: "Comedown Machine",
     profile: "/assets/images/strokes-comedownmachine.jpg"
@@ -54,6 +57,7 @@
   {
     value: 7,
     color: "sap",
+    fab: "jackson-300",
     artist: "Flipsyde",
     album: "We The People",
     profile: "/assets/images/flipside.jpg",
@@ -62,7 +66,7 @@
   {
     value: 8,
     color: "jagular",
-    fab: "jagular",
+    fab: "portrage-300",
     artist: "Rhye",
     album: "Woman",
     profile: "/assets/images/rhye-woman.jpg",
@@ -71,6 +75,7 @@
   {
     value: 9,
     color: "athens",
+    fab: "yuna-yellow",
     artist: "Jamie Lidell",
     album: "Jamie Lidell",
     profile: "/assets/images/jamie-lidell-cover.jpg",
@@ -79,6 +84,7 @@
   {
     value: 10,
     color: "egyptian-blue",
+    fab: "yuna-yellow",
     artist: "Neon Trees",
     album: "Pop Psychology",
     profile: "/assets/images/neon-trees-pop-psychology.jpg",
@@ -87,6 +93,7 @@
   {
     value: 11,
     color: "william",
+    fab: "yuna-yellow",
     artist: "Foster The People",
     album: "Supermodel",
     profile: "/assets/images/foster-the-people.jpg",
@@ -95,6 +102,7 @@
   {
     value: 12,
     color: "charcoal",
+    fab: "yuna-yellow",
     artist: "Fitz And The Tantrums",
     album: "More Than Just A Dream",
     profile: "/assets/images/more-than-just-a-dream.jpg",
@@ -115,6 +123,7 @@
           data-background="{{tile.background | safe}}"
           data-album="{{tile.album}}"
           data-artist="{{tile.artist}}"
+          data-fab="{{tile.fab}}"
           class="{{"tile " + tile.color + "-" + 300}}"
           style='background-image: url("{{tile.profile | safe}}");'>
           <div class="{{"footer " + tile.color + "-" + 300}}">
@@ -131,13 +140,6 @@
         id="bg-img"
         class="fade">
       </div>
-      <!-- TODO: missing component -->
-      <!-- <paper-toolbar class="fixed-background-toolbar">
-        <paper-icon-button icon="arrow-back"></paper-icon-button>
-        <span>[[artist]]</span>
-        <span class="flex"></span>
-        <paper-icon-button icon="search"></paper-icon-button>
-      </paper-toolbar> -->
 
       <!-- card for the fullsize view -->
       <div id="card">
@@ -147,18 +149,42 @@
           </div>
           <!-- details panel -->
           <div class="album-details">
-            <!-- TODO: missing component -->
-            <!-- <paper-toolbar class="album-toolbar">
-              <span class="flex"></span>
-              <paper-icon-button icon="star"></paper-icon-button>
-            </paper-toolbar> -->
             <div class="album-text">
               <span class="album-name"></span>
               <span class="artist-name"></span>
             </div>
             <div id="lowerbar">
-              <!-- TODO: missing component -->
-              <!-- <paper-fab icon="av:playlist-add" class$="[[_computeFabClass(fab)]]"></paper-fab> -->
+              <div id="fab">
+                <svg
+                  width="20px"
+                  height="14px"
+                  viewBox="0 0 20 14"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+                  <title>playlist_add</title>
+                  <desc>Created with Sketch.</desc>
+                  <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Two-Tone" transform="translate(-238.000000, -956.000000)">
+                      <g id="AV" transform="translate(100.000000, 852.000000)">
+                        <g id="Two-Tone-/-AV-/-playlist_add" transform="translate(136.000000, 98.000000)">
+                          <g>
+                            <polygon
+                              id="Path"
+                              points="0 0 24 0 24 24 0 24">
+                            </polygon>
+                            <path
+                              d="M2,14 L10,14 L10,16 L2,16 L2,14 Z M2,10 L14,10 L14,12 L2,12 L2,10 Z M2,6 L14,6 L14,8 L2,8 L2,6 Z M18,10 L16,10 L16,14 L12,14 L12,16 L16,16 L16,20 L18,20 L18,16 L22,16 L22,14 L18,14 L18,10 Z"
+                              id="ðŸ”¹-Primary-Color"
+                              fill="#FFFFFF">
+                            </path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
               <div class="music-control">
                 <svg
                   version="1.1"

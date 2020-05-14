@@ -17,6 +17,7 @@ const albumArt = document.querySelector(".album-art");
 const lowerBar = document.getElementById("lowerbar");
 const albumName = document.querySelector(".album-name");
 const artistName = document.querySelector(".artist-name");
+const fab = document.getElementById("fab");
 let rippleAnimation;
 let heroAnimation;
 let fadeOutAnimation;
@@ -84,6 +85,7 @@ const openFullSizePageWithCard = event => {
   const selectedProfile = event.srcElement.dataset.profile;
   const selectedAlbum = event.srcElement.dataset.album;
   const selectedArtist = event.srcElement.dataset.artist;
+  const selectedFab = event.srcElement.dataset.fab;
   bgImg.style["background-image"] = `url("${selectedBackground}")`;
   albumArt.style["background-image"] = `url("${selectedProfile}")`;
   fixedBackground.className = `${selectedColor}-100`;
@@ -91,6 +93,7 @@ const openFullSizePageWithCard = event => {
   lowerBar.className = `${selectedColor}-100`;
   albumName.innerHTML = selectedAlbum;
   artistName.innerHTML = selectedArtist;
+  fab.className = selectedFab;
 
   // MEMO: this must be preceded before rippleAnimation(); & runHeroAnimation();
   toggleFullSizePageWithCard(TOGGLE_TYPE.OPEN);

@@ -329,10 +329,8 @@ body {
 .album-art {
   width: 360px;
   height: 360px;
-}
-.album-art img {
-  width: 100%;
-  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .album-name {
@@ -417,10 +415,7 @@ body {
 
   .album-art {
     width: 100%;
-    height: auto;
-  }
-  .album-art img {
-    height: auto;
+    height: 100vw;
   }
 
   .album-details .album-text {

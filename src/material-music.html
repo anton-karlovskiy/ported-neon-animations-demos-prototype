@@ -7,8 +7,8 @@
     color: "blue",
     artist: "Kodaline",
     album: "In A Perfect World",
-    url: "assets/images/kodaline.jpg",
-    largeUrl: "assets/images/large-kodaline.jpg"
+    url: "/assets/images/kodaline.jpg",
+    largeUrl: "/assets/images/large-kodaline.jpg"
   },
   {
     value: 2,
@@ -16,15 +16,15 @@
     fab: "yuna-yellow",
     artist: "Yuna",
     album: "Lights and Camera",
-    url: "assets/images/artworks-000060971310-g3znsu-t500x500.jpg",
-    largeUrl: "assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg"},
+    url: "/assets/images/artworks-000060971310-g3znsu-t500x500.jpg",
+    largeUrl: "/assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg"},
   {
     value: 3,
     color: "purple",
     artist: "Ellie Goulding",
     album: "Halcyon Days",
-    url: "assets/images/ellie-goulding-halcyon-days-500x500.jpg",
-    largeUrl: "assets/images/ellie-goulding-bg.jpg",
+    url: "/assets/images/ellie-goulding-halcyon-days-500x500.jpg",
+    largeUrl: "/assets/images/ellie-goulding-bg.jpg",
     fab: "ellie-blue"
   },
   {
@@ -32,7 +32,7 @@
     color: "vivid",
     artist: "One Republic",
     album: "Native",
-    url: "assets/images/one-republic.jpg",
+    url: "/assets/images/one-republic.jpg",
     size: "cover"
   },
   {
@@ -40,7 +40,7 @@
     color: "mulberry",
     artist: "The Strokes",
     album: "Comedown Machine",
-    url: "assets/images/strokes-comedownmachine.jpg"
+    url: "/assets/images/strokes-comedownmachine.jpg"
   },
   {
     value: 6,
@@ -48,16 +48,16 @@
     fab: "pharrell-fab",
     artist: "Pharrell Williams",
     album: "GIRL",
-    url: "assets/images/pharrell-girl-bright.jpg",
-    largeUrl: "assets/images/20150204-pharrellwilliams-sgp.jpg"
+    url: "/assets/images/pharrell-girl-bright.jpg",
+    largeUrl: "/assets/images/20150204-pharrellwilliams-sgp.jpg"
   },
   {
     value: 7,
     color: "sap",
     artist: "Flipsyde",
     album: "We The People",
-    url: "assets/images/flipside.jpg",
-    largeUrl: "assets/images/flipside.jpg"
+    url: "/assets/images/flipside.jpg",
+    largeUrl: "/assets/images/flipside.jpg"
   },
   {
     value: 8,
@@ -65,40 +65,40 @@
     fab: "jagular",
     artist: "Rhye",
     album: "Woman",
-    url: "assets/images/rhye-woman.jpg",
-    largeUrl: "assets/images/rhye-woman.jpg"
+    url: "/assets/images/rhye-woman.jpg",
+    largeUrl: "/assets/images/rhye-woman.jpg"
   },
   {
     value: 9,
     color: "athens",
     artist: "Jamie Lidell",
     album: "Jamie Lidell",
-    url: "assets/images/jamie-lidell-cover.jpg",
-    largeUrl: "assets/images/jamie-lidell-cover.jpg"
+    url: "/assets/images/jamie-lidell-cover.jpg",
+    largeUrl: "/assets/images/jamie-lidell-cover.jpg"
   },
   {
     value: 10,
     color: "egyptian-blue",
     artist: "Neon Trees",
     album: "Pop Psychology",
-    url: "assets/images/neon-trees-pop-psychology.jpg",
-    largeUrl: "assets/images/neon-trees-pop-psychology.jpg"
+    url: "/assets/images/neon-trees-pop-psychology.jpg",
+    largeUrl: "/assets/images/neon-trees-pop-psychology.jpg"
   },
   {
     value: 11,
     color: "william",
     artist: "Foster The People",
     album: "Supermodel",
-    url: "assets/images/foster-the-people.jpg",
-    largeUrl: "assets/images/foster-the-people.jpg"
+    url: "/assets/images/foster-the-people.jpg",
+    largeUrl: "/assets/images/foster-the-people.jpg"
   },
   {
     value: 12,
     color: "charcoal",
     artist: "Fitz And The Tantrums",
     album: "More Than Just A Dream",
-    url: "assets/images/more-than-just-a-dream.jpg",
-    largeUrl: "assets/images/fitz-tantrums-more-than-just-dream.jpg"
+    url: "/assets/images/more-than-just-a-dream.jpg",
+    largeUrl: "/assets/images/fitz-tantrums-more-than-just-dream.jpg"
   }
 ] %}
 
@@ -116,7 +116,7 @@
           data-album="{{tile.album}}"
           data-artist="{{tile.artist}}"
           class="{{"tile " + tile.color + "-" + 300}}"
-          style="background-image: url({{tile.url}});">
+          style='background-image: url("{{tile.url | safe}}");'>
           <div class="{{"footer " + tile.color + "-" + 300}}">
             <div class="album">{{tile.album}}</div>
             <div class="artist">{{tile.artist}}</div>
@@ -144,7 +144,6 @@
         <div class="container">
           <!-- album cover -->
           <div class="album-art">
-            <img src="" alt="Album Art Profile">
           </div>
           <!-- details panel -->
           <div class="album-details">

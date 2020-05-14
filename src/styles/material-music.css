@@ -1,4 +1,4 @@
-/* MEMO: common styling */
+/* MEMO: common coloring */
 .blue-100 {
   background-color: #c6dafc;
 }
@@ -348,6 +348,14 @@ body {
 .album-details {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.album-details .favorite-star {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 16px;
 }
 
 .album-details .album-text {

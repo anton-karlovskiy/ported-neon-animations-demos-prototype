@@ -80,12 +80,12 @@ const openFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
 
   const selectedColor = event.srcElement.dataset.color;
-  const selectedLargeUrl = event.srcElement.dataset.largeurl;
-  const selectedUrl = event.srcElement.dataset.url;
+  const selectedBackground = event.srcElement.dataset.background;
+  const selectedProfile = event.srcElement.dataset.profile;
   const selectedAlbum = event.srcElement.dataset.album;
   const selectedArtist = event.srcElement.dataset.artist;
-  bgImg.style["background-image"] = `url("${selectedLargeUrl}")`;
-  albumArt.style["background-image"] = `url("${selectedUrl}")`;
+  bgImg.style["background-image"] = `url("${selectedBackground}")`;
+  albumArt.style["background-image"] = `url("${selectedProfile}")`;
   fixedBackground.className = `${selectedColor}-100`;
   card.className = `${selectedColor}-300`;
   lowerBar.className = `${selectedColor}-100`;

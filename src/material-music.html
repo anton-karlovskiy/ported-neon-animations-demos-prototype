@@ -18,7 +18,8 @@
     artist: "Yuna",
     album: "Lights and Camera",
     profile: "/assets/images/artworks-000060971310-g3znsu-t500x500.jpg",
-    background: "/assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg"},
+    background: "/assets/images/yuna-a47c1e9674648887f73980cc458c6de378f57884.jpg"
+  },
   {
     value: 3,
     color: "purple",
@@ -117,7 +118,6 @@
     <div class="animated-grid">
       {% for tile in tiles %}
         <div
-          id="tile"
           data-color="{{tile.color}}"
           data-profile="{{tile.profile | safe}}"
           data-background="{{tile.background | safe}}"

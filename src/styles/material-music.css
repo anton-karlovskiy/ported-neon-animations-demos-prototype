@@ -1,4 +1,5 @@
-/* MEMO: common coloring */
+
+/* MEMO: tile coloring */
 .blue-100 {
   background-color: #c6dafc;
 }
@@ -222,11 +223,6 @@ body {
   line-height: 19px;
 }
 
-.tile:nth-of-type(8), .tile:nth-of-type(9) {
-  background-size: cover;
-  background-position: 50%;
-}
-
 @media (min-width: 1288px) {
   /* There's enough vert/horz space for artwork to use contain */
   .tile {
@@ -243,6 +239,8 @@ body {
 @media (max-width: 640px) {
   .tile,
   .tile:nth-of-type(n) {
+    left: unset;
+    top: unset;
     width: calc(100% / 2);
     height: calc(100% / 3);
     position: relative;

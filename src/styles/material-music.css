@@ -380,8 +380,9 @@ body {
   align-items: center;
 
   position: absolute;
+  top: 0;
   right: 30px;
-  top: -50%;
+  transform: translate(0, -50%);
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -445,7 +446,7 @@ body {
   }
 }
 
-/* MEMO: song list */
+/* MEMO: album list */
 .album-list {
   background: #FFFFFF;
   height: 100%;

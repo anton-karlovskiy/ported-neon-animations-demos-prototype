@@ -129,7 +129,7 @@ const toggleFullSizePageWithCard = toggleType => {
   }
 };
 
-const runRippleAnimation = ({ gesture, from, to }) => {
+const runRippleAnimation = ({ gesture = null, from, to }) => {
   let translateX, translateY;
   const fromRect = from.getBoundingClientRect();
   const toRect = to.getBoundingClientRect();

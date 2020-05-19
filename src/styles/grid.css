@@ -11,14 +11,6 @@ body {
   right: 0;
 }
 
-.fullsize-page-with-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
 .fullsize-page-with-card #fixed {
   position: fixed;
   top: 0;

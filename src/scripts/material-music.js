@@ -10,9 +10,9 @@ const TOGGLE_TYPE = {
 };
 
 const tiles = document.getElementsByClassName("tile");
-const fixedBackground = document.getElementById("fixed");
+const colorBackground = document.getElementById("color-background");
+const imageBackground = document.getElementById("image-background");
 const card = document.getElementById("card");
-const bgImg = document.getElementById("bg-img");
 const albumArt = document.querySelector(".album-art");
 const lowerBar = document.getElementById("lowerbar");
 const albumName = document.querySelector(".album-name");
@@ -86,9 +86,9 @@ const openFullSizePageWithCard = event => {
   const selectedAlbum = event.srcElement.dataset.album;
   const selectedArtist = event.srcElement.dataset.artist;
   const selectedFab = event.srcElement.dataset.fab;
-  bgImg.style["background-image"] = `url("${selectedBackground}")`;
+  imageBackground.style["background-image"] = `url("${selectedBackground}")`;
   albumArt.style["background-image"] = `url("${selectedProfile}")`;
-  fixedBackground.className = `${selectedColor}-100`;
+  colorBackground.className = `${selectedColor}-100`;
   card.className = `${selectedColor}-300`;
   lowerBar.className = `${selectedColor}-100`;
   albumName.innerHTML = selectedAlbum;
@@ -104,14 +104,18 @@ const openFullSizePageWithCard = event => {
       y: event.y || event.pageY
     },
     from: event.target,
-    to: fixedBackground
+    to: colorBackground
   });
-  runHeroAnimation({delay: 150, from: event.target, to: card});
+  runHeroAnimation({
+    delay: 150,
+    from: event.target,
+    to: card
+  });
 };
 
 const closeFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
-  runFadeOutAnimation({node: fixedBackground});
+  runFadeOutAnimation({node: colorBackground});
 
   runTransformAnimation({
     transformFrom: "none",
@@ -278,11 +282,11 @@ for (const tile of tiles) {
   tile.addEventListener("mousedown", openFullSizePageWithCard, false);
 }
 
-fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
+colorBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
 
 window.onunload = function() {
   for (const tile of tiles) {
     tile.removeEventListener("mousedown", openFullSizePageWithCard, false);
   }
-  fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
+  colorBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
 }

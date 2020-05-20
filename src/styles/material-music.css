@@ -256,7 +256,7 @@ body {
   display: none;
 }
 
-.fullsize-page-with-card #fixed, .fullsize-page-with-card #bg-img {
+.fullsize-page-with-card #color-background, .fullsize-page-with-card #image-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -264,7 +264,7 @@ body {
   width: 100vw;
 }
 
-.fullsize-page-with-card #bg-img {
+.fullsize-page-with-card #image-background {
   pointer-events: none;
   background-size: cover;
 }

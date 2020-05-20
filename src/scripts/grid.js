@@ -10,7 +10,7 @@ const TOGGLE_TYPE = {
 };
 
 const tiles = document.getElementsByClassName("tile");
-const fixedBackground = document.getElementById("fixed");
+const colorBackground = document.getElementById("color-background");
 const card = document.getElementById("card");
 let rippleAnimation;
 let heroAnimation;
@@ -90,7 +90,7 @@ const openFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
 
   const selectedColor = event.srcElement.dataset.color;
-  fixedBackground.className = `${selectedColor}-100`;
+  colorBackground.className = `${selectedColor}-100`;
   card.className = `${selectedColor}-300`;
 
   // MEMO: this must be preceded before rippleAnimation(); & runHeroAnimation();
@@ -102,14 +102,14 @@ const openFullSizePageWithCard = event => {
       y: event.y || event.pageY
     },
     from: event.target,
-    to: fixedBackground
+    to: colorBackground
   });
   runHeroAnimation({delay: 150, from: event.target, to: card});
 };
 
 const closeFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
-  runFadeOutAnimation({node: fixedBackground});
+  runFadeOutAnimation({node: colorBackground});
 
   runTransformAnimation({
     transformFrom: "none",
@@ -276,11 +276,11 @@ for (const tile of tiles) {
   tile.addEventListener("mousedown", openFullSizePageWithCard, false);
 }
 
-fixedBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
+colorBackground.addEventListener("mousedown", closeFullSizePageWithCard, false);
 
 window.onunload = function() {
   for (const tile of tiles) {
     tile.removeEventListener("mousedown", openFullSizePageWithCard, false);
   }
-  fixedBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
+  colorBackground.removeEventListener("mousedown", closeFullSizePageWithCard, false);
 }

@@ -86,7 +86,7 @@ const openFullSizePageWithCard = event => {
   const selectedAlbum = event.srcElement.dataset.album;
   const selectedArtist = event.srcElement.dataset.artist;
   const selectedFab = event.srcElement.dataset.fab;
-  imageBackground.style["background-image"] = `url("${selectedBackground}")`;
+  imageBackground.style["background-image"] = selectedBackground ? `url("${selectedBackground}")` : '';
   albumArt.style["background-image"] = `url("${selectedProfile}")`;
   colorBackground.className = `${selectedColor}-100`;
   card.className = `${selectedColor}-300`;
@@ -115,7 +115,8 @@ const openFullSizePageWithCard = event => {
 
 const closeFullSizePageWithCard = event => {
   if (checkAnimationsRunning()) return;
-  runFadeOutAnimation({node: colorBackground});
+  const fadeOutNode = imageBackground.style["background-image"] ? imageBackground : colorBackground;
+  runFadeOutAnimation({node: fadeOutNode});
 
   runTransformAnimation({
     transformFrom: "none",

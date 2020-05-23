@@ -240,7 +240,7 @@ const runFadeOutAnimation = ({ node }) => {
   fadeOutAnimation.play();
 
   fadeOutAnimation.onfinish = (() => {
-    // MEMO: could be simpler
+    // TODO: could be simpler
     if (!transformAnimation || transformAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
       toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }
@@ -272,7 +272,7 @@ const runTransformAnimation = ({
   transformAnimation.play();
 
   transformAnimation.onfinish = (() => {
-    // MEMO: the same
+    // TODO: the same
     if (!fadeOutAnimation || fadeOutAnimation.playState !== ANIMATION_PLAY_STATE.RUNNING) {
       toggleFullSizePageWithCard(TOGGLE_TYPE.CLOSE);
     }

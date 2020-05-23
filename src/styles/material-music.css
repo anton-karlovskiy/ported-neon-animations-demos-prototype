@@ -226,13 +226,12 @@ body {
 @media (min-width: 1288px) {
   /* There's enough vert/horz space for artwork to use contain */
   .tile {
-    background-size: contain;
+    background-size: cover;
     background-position: initial;
   }
 
   /* For tiles that still don't work well on contain, revert to cover */
   .tile:nth-of-type(1), .tile:nth-of-type(7), .tile:nth-of-type(6) {
-    background-size: cover;
     background-position: 50%;
   }
 }
